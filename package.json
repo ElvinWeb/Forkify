@@ -1,0 +1,28 @@
+{
+  "name": "fokify",
+  "version": "1.0.0",
+  "description": "Recipe App",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElvinWeb/Forkify.git"
+  },
+  "author": "Elvin Sarkarov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElvinWeb/Forkify/issues"
+  },
+  "homepage": "https://github.com/ElvinWeb/Forkify#readme",
+  "dependencies": {
+    "core-js": "^3.36.1",
+    "parcel": "^2.12.0",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0"
+  }
+}
