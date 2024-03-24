@@ -20,6 +20,6 @@ export const loadRecipe = async function (hashId) {
       ingredients: recipe.ingredients,
     };
   } catch (err) {
-    alert(err);
+    throw err;
   }
 };

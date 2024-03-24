@@ -3,8 +3,6 @@ import recipeView from "./views/recipeview.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-
-
 const controlRecipes = async function () {
   try {
     const hashId = window.location.hash.slice(1);
@@ -16,10 +14,12 @@ const controlRecipes = async function () {
 
     recipeView.render(model.state.recipe);
   } catch (err) {
-    alert(err);
+    recipeView.renderError();
   }
 };
 
-["haschange", "load"].forEach((event) =>
-  window.addEventListener(event, controlRecipes)
-);
+const init = function () {
+  recipeView.addHandlerHelper(controlRecipes);
+};
+
+init();
