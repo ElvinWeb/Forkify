@@ -9,11 +9,10 @@ class ResultsView extends View {
   _generateMarkup() {
     return this._data.map(this._generateMarkupPreview).join("");
   }
-
   _generateMarkupPreview(result) {
     return `
     <li class="preview">
-        <a class="preview__link preview__link--active" href="#${result.id}">
+        <a class="preview__link" href="#${result.id}">
           <figure class="preview__fig">
             <img src="${result.image}" alt="${result.title}" />
           </figure>

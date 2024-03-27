@@ -1,8 +1,6 @@
 .recipe {
   background-color: $color-grey-light-1;
-
-  ///////////
-  // FIGURE
+  border-left: 3px solid $color-primary;
   &__fig {
     height: 32rem;
     position: relative;
@@ -62,8 +60,6 @@
     }
   }
 
-  ///////////
-  // DETAILS
   &__details {
     display: flex;
     align-items: center;

@@ -89,7 +89,7 @@ class RecipeView extends View {
         </div>`;
   }
   addHandlerHelper(handler) {
-    ["load", "haschange"].forEach((event) =>
+    ["haschange", "load"].forEach((event) =>
       window.addEventListener(event, handler)
     );
   }
