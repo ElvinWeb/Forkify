@@ -6,16 +6,14 @@ import paginationView from "./views/paginationView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async function () {
   try {
     const hashId = window.location.hash.slice(1);
     if (!hashId) return;
 
     recipeView.renderSpinner();
+
+    resultsView.update(model.getSearchResultsPage());
 
     await model.loadRecipe(hashId);
 
@@ -51,7 +49,8 @@ const controlPagination = function (goToPage) {
 const controlServings = function (newServings) {
   model.updateServings(newServings);
 
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 };
 
 const init = function () {
