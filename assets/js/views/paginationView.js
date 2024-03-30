@@ -9,7 +9,6 @@ class PaginationView extends View {
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
-    console.log(numPages);
 
     if (currPage === 1 && numPages > 1) {
       return `
@@ -58,7 +57,7 @@ class PaginationView extends View {
       `;
     }
 
-    return "only 1 page";
+    return "";
   }
   addHandlerClick(handler) {
     this._parentElement.addEventListener("click", function (e) {
