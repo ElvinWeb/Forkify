@@ -3,14 +3,13 @@ import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
-import bookmarksView from "./views/bookMarksView.js";
+import bookmarksView from "./views/bookmarksView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 const controlRecipes = async function () {
   try {
     const hashId = window.location.hash.slice(1);
-    console.log(hashId);
     if (!hashId) return;
 
     recipeView.renderSpinner();
@@ -27,7 +26,6 @@ const controlRecipes = async function () {
 const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
-
     const query = searchView.getQuery();
     if (!query) return;
 
@@ -42,7 +40,6 @@ const controlSearchResults = async function () {
 
 const controlPagination = function (goToPage) {
   resultsView.render(model.getSearchResultsPage(goToPage));
-
   paginationView.render(model.state.search);
 };
 
@@ -58,7 +55,12 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlBookmarks = function () {
+  bookmarksView.render(model.state.bookmarks);
+};
+
 const init = function () {
+  bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerHelper(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerBookmark(controlAddBookmark);
