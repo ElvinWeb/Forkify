@@ -11,8 +11,9 @@
 }
 
 .pagination {
-  margin-top: 1.5rem;
-  padding: 0 3.5rem;
+  margin-top: auto;
+  padding: 0rem 3.5rem 5rem;
+  position: relative;
 
   &::after {
     content: '';
@@ -27,6 +28,23 @@
 
     &--next {
       float: right;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    font-size: 1.5rem;
+    padding: 1rem 4rem 1rem 2rem;
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: 700;
+    clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+    transition: all 0.2s;
+
+    &:hover {
+      padding-left: 3rem;
     }
   }
 }
