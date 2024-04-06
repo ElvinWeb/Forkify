@@ -8,15 +8,21 @@ const timeout = function (s) {
   });
 };
 
-export const AJAX = async function (url, uploadData = undefined) {
+export const AJAX = async function (
+  url,
+  uploadData = undefined,
+  contentType = undefined
+) {
   try {
     const fetchPro = uploadData
       ? fetch(url, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": contentType,
           },
-          body: JSON.stringify(uploadData),
+          body: contentType === "application/json"
+          ? JSON.stringify(uploadData)
+          : new URLSearchParams(uploadData),
         })
       : fetch(url);
 
@@ -28,4 +34,15 @@ export const AJAX = async function (url, uploadData = undefined) {
   } catch (err) {
     throw err;
   }
+};
+
+export const getTotalNutrientAmount = function (ingredientsArr, nutrient) {
+  return ingredientsArr
+    .map(
+      (ing) =>
+        ing.nutrition?.nutrients.find(
+          (nutr) => nutr.name === nutrient[0].toUpperCase() + nutrient.slice(1)
+        )?.amount ?? 0
+    )
+    .reduce((acc, ingNutr) => acc + ingNutr, 0);
 };

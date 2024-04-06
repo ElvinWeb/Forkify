@@ -1,5 +1,11 @@
-import { API_URL, RES_PER_PAGE, API_KEY } from "./config.js";
-import { AJAX } from "./helpers.js";
+import {
+  API_URL,
+  RES_PER_PAGE,
+  API_KEY,
+  SPOONACULAR_API_KEY,
+  SPOONACULAR_API_URL,
+} from "./config.js";
+import { AJAX, getTotalNutrientAmount } from "./helpers.js";
 
 export const state = {
   recipe: {},
@@ -10,6 +16,7 @@ export const state = {
     page: 1,
   },
   bookmarks: [],
+  ingredientList: [],
 };
 
 const createRecipeObject = function (data) {
@@ -26,6 +33,7 @@ const createRecipeObject = function (data) {
     ...(recipe.key && { key: recipe.key }),
   };
 };
+
 export const loadRecipe = async function (id) {
   try {
     const data = await AJAX(`${API_URL}/${id}?key=${API_KEY}`);
@@ -36,6 +44,33 @@ export const loadRecipe = async function (id) {
     } else {
       state.recipe.bookmarked = false;
     }
+
+    const ingredientList = state.recipe.ingredients
+      .map(
+        (ing) => `${ing.quantity ?? ""} ${ing.unit ?? ""} ${ing.description}`
+      )
+      .join("\n");
+
+    const ingredientsData = await AJAX(
+      `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
+      {
+        ingredientList: ingredientList,
+        servings: state.recipe.servings,
+        includeNutrition: true,
+      },
+      "application/x-www-form-urlencoded"
+    );
+
+    const calories = getTotalNutrientAmount(ingredientsData, "calories");
+    const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
+    const proteins = getTotalNutrientAmount(ingredientsData, "protein");
+    const fats = getTotalNutrientAmount(ingredientsData, "fat");
+
+    state.recipe.calories = Math.floor(calories / state.recipe.servings);
+    state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
+    state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
+    state.recipe.fats = Math.floor(fats / state.recipe.servings);
+
   } catch (err) {
     throw err;
   }

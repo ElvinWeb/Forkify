@@ -4,7 +4,6 @@
   &__fig {
     height: 32rem;
     position: relative;
-    // transform: scale(1.04) translateY(-1px);
     transform-origin: top;
 
     &::before {
@@ -97,14 +96,12 @@
 
   &__user-generated {
     background-color: darken($color-grey-light-2, 2%);
-
     display: flex;
     align-items: center;
     justify-content: center;
     height: 4rem;
     width: 4rem;
     border-radius: 10rem;
-
     margin-left: auto;
     margin-right: 1.75rem;
 
@@ -115,8 +112,35 @@
     }
   }
 
-  ///////////
-  // INGREDIENTS
+  &__nutritional-data {
+    padding: 2rem 8rem 6rem 8rem;
+
+    h3 {
+      margin: 0;
+    }
+  }
+  &__nutrients {
+    margin-top: 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+  }
+  &__nutrient-field {
+    background-color: $color-grey-light-1;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 3rem 2rem;
+    text-align: center;
+    min-width: 13rem;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+  }
+  &__nutrient-value {
+    color: $color-primary;
+    font-weight: 600;
+  }
+
   &__ingredients {
     padding: 5rem 8rem;
     font-size: 1.6rem;
@@ -152,8 +176,6 @@
     flex: 0 0 auto;
   }
 
-  ///////////
-  // DIRECTIONS
   &__directions {
     padding: 5rem 10rem;
     padding-bottom: 5rem;
