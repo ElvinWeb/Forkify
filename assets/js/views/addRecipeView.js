@@ -1,5 +1,4 @@
 import View from "./view.js";
-import icons from "../../img/icons.svg";
 
 class AddRecipeView extends View {
   _parentElement = document.querySelector(".upload");
@@ -34,7 +33,6 @@ class AddRecipeView extends View {
       handler(data);
     });
   }
-  _generateMarkup() {}
 }
 
 export default new AddRecipeView();

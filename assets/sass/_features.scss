@@ -1,0 +1,40 @@
+.features {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    place-content: center;
+    gap: 3.2rem;
+    padding: 0 3rem;
+    margin-top: 3rem;
+
+    &__feature-box {
+        max-width: 24rem;
+        box-shadow: 0.8rem 1.5rem 2rem rgba(#000, 0.1);
+        border-radius: 1rem;
+        margin-top: 2.5rem;
+        padding: 2.8rem 3.2rem;
+        transition: all 0.2s;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+
+    &__icon {
+        svg {
+            width: 5rem;
+            height: 5rem;
+            fill: $color-primary;
+        }
+    }
+
+    &__description {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $color-grey-dark-2;
+    }
+}
+
+.section__features--header {
+    margin-top: 4rem;
+}
