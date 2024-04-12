@@ -1,6 +1,7 @@
 .recipe {
   background-color: $color-grey-light-1;
   border-left: 3px solid $color-primary;
+
   &__fig {
     height: 32rem;
     position: relative;
@@ -9,31 +10,21 @@
     &::before {
       content: '';
       display: block;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
+      @include size(100%, 100%, null);
+      @include position(absolute, 0, null, null, 0);
+      background-image: linear-gradient(to right bottom,
+          $color-grad-1,
+          $color-grad-2);
       opacity: 0.6;
     }
   }
 
   &__img {
-    width: 100%;
-    display: block;
-    height: 100%;
-    object-fit: cover;
+    @extend %img-cover;
   }
 
   &__title {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
+    @include position(absolute, null, null, 0, 50%);
     transform: translate(-50%, 20%) skewY(-6deg);
     color: #fff;
     font-weight: 700;
@@ -47,11 +38,9 @@
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
       padding: 1.3rem 2rem;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
+      background-image: linear-gradient(to right bottom,
+          $color-grad-1,
+          $color-grad-2);
     }
 
     @media only screen and (max-width: $bp-medium) {
@@ -60,16 +49,14 @@
   }
 
   &__details {
-    display: flex;
-    align-items: center;
+    @include flex(null, center, null);
     padding: 7.5rem 8rem 3.5rem 8rem;
   }
 
   &__info {
     font-size: 1.65rem;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
+    @include flex(null, center, null);
 
     &:not(:last-child) {
       margin-right: 4.5rem;
@@ -77,8 +64,7 @@
   }
 
   &__info-icon {
-    height: 2.35rem;
-    width: 2.35rem;
+    @include size(2.35rem, 2.35rem, null);
     fill: $color-primary;
     margin-right: 1.15rem;
   }
@@ -96,19 +82,14 @@
 
   &__user-generated {
     background-color: darken($color-grey-light-2, 2%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    width: 4rem;
+    @include flex(center, center, null);
+    @include size(4rem, 4rem, null);
     border-radius: 10rem;
     margin-left: auto;
     margin-right: 1.75rem;
 
     svg {
-      height: 2.25rem;
-      width: 2.25rem;
-      fill: $color-primary;
+      @include size(2.25rem, 2.25rem, $color-primary);
     }
   }
 
@@ -119,13 +100,13 @@
       margin: 0;
     }
   }
+
   &__nutrients {
     margin-top: 3rem;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @include flex(space-between, null, row wrap);
 
   }
+
   &__nutrient-field {
     background-color: $color-grey-light-1;
     font-size: 1.4rem;
@@ -136,6 +117,7 @@
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
   }
+
   &__nutrient-value {
     color: $color-primary;
     font-weight: 600;
@@ -147,8 +129,8 @@
     line-height: 1.4;
     background-color: $color-grey-light-2;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 
   &__ingredient-list {
@@ -163,9 +145,7 @@
   }
 
   &__icon {
-    height: 2rem;
-    width: 2rem;
-    fill: $color-primary;
+    @include size(2rem, 2rem, $color-primary);
     margin-right: 1.1rem;
     flex: 0 0 auto;
     margin-top: 0.1rem;

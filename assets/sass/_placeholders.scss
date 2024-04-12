@@ -1,0 +1,28 @@
+%btn {
+    background-image: $gradient;
+    border-radius: 10rem;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    @include flex(null, center, null);
+    transition: all 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &>*:first-child {
+        margin-right: 1rem;
+    }
+}
+
+%img-cover {
+    @include size(100%, 100%, null);
+    display: block;
+    object-fit: cover;
+}

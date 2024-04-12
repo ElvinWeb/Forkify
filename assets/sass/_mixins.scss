@@ -1,0 +1,86 @@
+@mixin position($position: relative, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+
+    @if $top {
+        top: $top;
+    }
+
+    @if $right {
+        right: $right;
+    }
+
+    @if $bottom {
+        bottom: $bottom;
+    }
+
+    @if $left {
+        left: $left;
+    }
+}
+
+@mixin size($height, $width, $fill) {
+    @if $fill {
+        width: $width;
+        height: $height;
+        fill: $fill;
+    }
+
+    @else {
+        width: $width;
+        height: $height;
+    }
+}
+
+@mixin flex($justify: null, $align: null, $flow: null) {
+    display: flex;
+
+    @if $align {
+        align-items: $align;
+    }
+
+    @if $justify {
+        justify-content: $justify;
+    }
+
+    @if $align and $justify {
+        align-items: $align;
+        justify-content: $justify;
+    }
+
+    @if $justify and $flow {
+        justify-content: $justify;
+        flex-flow: $flow;
+    }
+
+}
+
+@mixin visibility($visibility: null, $opacity: null) {
+    visibility: $visibility;
+    opacity: $opacity;
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint==phone-small {
+        @media only screen and (max-width: $bp-smallest) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==phone {
+        @media only screen and (max-width: $bp-small) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==tab-port {
+        @media only screen and (max-width: $bp-medium) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==tab-land {
+        @media only screen and (max-width: $bp-large) {
+            @content;
+        }
+    }
+}

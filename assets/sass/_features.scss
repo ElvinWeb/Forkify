@@ -1,7 +1,5 @@
 .features {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @include flex(space-between, null, row wrap);
     place-content: center;
     gap: 3.2rem;
     padding: 0 3rem;
@@ -22,9 +20,7 @@
 
     &__icon {
         svg {
-            width: 5rem;
-            height: 5rem;
-            fill: $color-primary;
+            @include size(5rem, 5rem, $color-primary);
         }
     }
 

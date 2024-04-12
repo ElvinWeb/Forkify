@@ -1,12 +1,9 @@
 .add-recipe-window {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  @include position(fixed, 50%, null, null, 50%);
   transform: translate(-50%, -50%);
   width: 100rem;
   background-color: white;
   border-radius: 9px;
-
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   z-index: 1000;
@@ -15,9 +12,7 @@
   .btn--close-modal {
     font-family: inherit;
     color: inherit;
-    position: absolute;
-    top: 0.5rem;
-    right: 1.6rem;
+    @include position(absolute, 0.5rem, 1.6rem, null, null);
     font-size: 3.5rem;
     cursor: pointer;
     border: none;
@@ -26,11 +21,8 @@
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  @include position(fixed, 0, null, null, 0);
+  @include size(100%, 100%, null);
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   z-index: 100;
@@ -38,8 +30,7 @@
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
+  @include visibility(hidden, 0);
 }
 
 .upload {

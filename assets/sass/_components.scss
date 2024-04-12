@@ -1,56 +1,27 @@
-%btn {
-  background-image: $gradient;
-  border-radius: 10rem;
-  border: none;
-  text-transform: uppercase;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  & > *:first-child {
-    margin-right: 1rem;
-  }
-}
-
 .btn {
   @extend %btn;
-
   padding: 1.5rem 4rem;
   font-size: 1.5rem;
   font-weight: 600;
 
   svg {
-    height: 2.25rem;
-    width: 2.25rem;
-    fill: currentColor;
+    @include size(2.25rem, 2.25rem, currentColor);
   }
 }
 
 .btn--small {
+
   &,
   &:link,
   &:visited {
     @extend %btn;
-
     font-size: 1.4rem;
     font-weight: 600;
     padding: 1.25rem 2.25rem;
     text-decoration: none;
 
     svg {
-      height: 1.75rem;
-      width: 1.75rem;
-      fill: currentColor;
+      @include size(1.75rem, 1.75rem, currentColor);
     }
   }
 }
@@ -64,15 +35,11 @@
   padding: 0.8rem 1.2rem;
   border-radius: 10rem;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
+  @include flex(null, center, null);
   transition: all 0.2s;
 
   svg {
-    height: 1.6rem;
-    width: 1.6rem;
-    fill: currentColor;
+    @include size(1.6rem, 1.6rem, currentColor);
     margin: 0 0.2rem;
   }
 
@@ -95,13 +62,9 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  height: 4.5rem;
-  width: 4.5rem;
+  @include size(4.5rem, 4.5rem,null);
   transition: all 0.2s;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex(center, center, null);
 
   &:hover {
     transform: scale(1.07);
@@ -112,23 +75,18 @@
   }
 
   svg {
-    height: 2.5rem;
-    width: 2.5rem;
-    fill: #fff;
+    @include size(2.5rem, 2.5rem, #fff);
   }
 }
 
 .btn--tiny {
-  height: 2rem;
-  width: 2rem;
+  @include size(2rem, 2rem,null);
   border: none;
   background: none;
   cursor: pointer;
 
   svg {
-    height: 100%;
-    width: 100%;
-    fill: $color-primary;
+    @include size(100%, 100%, $color-primary);
     transition: all 0.3s;
   }
 
@@ -170,9 +128,7 @@
   text-align: center;
 
   svg {
-    height: 6rem;
-    width: 6rem;
-    fill: $color-primary;
+    @include size(6rem, 6rem, $color-primary);
     animation: rotate 2s infinite linear;
   }
 }
@@ -192,13 +148,10 @@
   max-width: 40rem;
   margin: 0 auto;
   padding: 5rem 4rem;
-
   display: flex;
 
   svg {
-    height: 3rem;
-    width: 3rem;
-    fill: $color-primary;
+    @include size(3rem, 3rem, $color-primary);
     transform: translateY(-0.3rem);
   }
 
