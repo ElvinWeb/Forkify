@@ -4,6 +4,10 @@
   font-size: 1.5rem;
   font-weight: 600;
 
+  @media only screen and (max-width: $bp-medium) {
+    padding: 1.5rem 2.5rem;
+  }
+
   svg {
     @include size(2.25rem, 2.25rem, currentColor);
   }
@@ -45,6 +49,11 @@
 
   span {
     margin: 0 0.4rem;
+
+    @media screen and (max-width: $bp-small) {
+      display: none;
+
+    }
   }
 
   &:hover {
@@ -62,7 +71,7 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  @include size(4.5rem, 4.5rem,null);
+  @include size(4.5rem, 4.5rem, null);
   transition: all 0.2s;
   @include flex(center, center, null);
 
@@ -80,7 +89,7 @@
 }
 
 .btn--tiny {
-  @include size(2rem, 2rem,null);
+  @include size(2rem, 2rem, null);
   border: none;
   background: none;
   cursor: pointer;

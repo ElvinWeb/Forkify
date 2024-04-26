@@ -1,15 +1,19 @@
 .features {
     @include flex(space-between, null, row wrap);
     place-content: center;
-    gap: 3.2rem;
+    column-gap: 3.2rem;
     padding: 0 3rem;
     margin-top: 3rem;
+
+    @media only screen and (max-width: $bp-large) {
+       column-gap: 6.5rem;
+    }
 
     &__feature-box {
         max-width: 24rem;
         box-shadow: 0.8rem 1.5rem 2rem rgba(#000, 0.1);
         border-radius: 1rem;
-        margin-top: 2.5rem;
+        margin-top: 3rem;
         padding: 2.8rem 3.2rem;
         transition: all 0.2s;
 
@@ -32,5 +36,5 @@
 }
 
 .section__features--header {
-    margin-top: 4rem;
+    margin-top: 4.5rem;
 }

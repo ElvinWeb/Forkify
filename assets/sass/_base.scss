@@ -12,10 +12,10 @@ $color-grey--2: #383838; // Lines / alternative
 
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
 
-$bp-large: 78.15em; // 1250px
-$bp-medium: 61.25em; // 980px
-$bp-small: 37.5em; // 600px
-$bp-smallest: 31.25em; // 500px
+$bp-large: 78.15em;
+$bp-medium: 62em;
+$bp-small: 48em; 
+$bp-smallest: 36em;
 
 * {
   margin: 0;
@@ -25,11 +25,10 @@ $bp-smallest: 31.25em; // 500px
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
-  box-sizing: border-box;
   font-size: 62.5%;
 
   @media only screen and (max-width: $bp-medium) {

@@ -7,7 +7,6 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
-
 export const AJAX = async function (
   url,
   uploadData = undefined,
@@ -35,7 +34,6 @@ export const AJAX = async function (
     throw err;
   }
 };
-
 export const getTotalNutrientAmount = function (ingredientsArr, nutrient) {
   return ingredientsArr
     .map(

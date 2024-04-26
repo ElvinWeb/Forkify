@@ -7,6 +7,18 @@
     margin-left: 4rem;
     height: 4.6rem;
     display: block;
+
+    @media screen and (max-width: $bp-small) {
+      display: none;
+    }
+  }
+
+  &__logo--mobile {
+    display: none;
+
+    @media screen and (max-width: $bp-small) {
+      display: block;
+    }
   }
 }
 
@@ -40,16 +52,18 @@
 
     @media only screen and (max-width: $bp-medium) {
       width: auto;
-
-      &::placeholder {
-        color: white;
-      }
     }
   }
 
   &__btn {
     font-weight: 600;
     font-family: inherit;
+
+    span {
+      @media screen and (max-width: $bp-small) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -82,7 +96,7 @@
     @include flex(null, center, null);
 
     svg {
-      @include size(2.4rem, 2.4rem,$color-primary);
+      @include size(2.4rem, 2.4rem, $color-primary);
       margin-right: 0.7rem;
       transform: translateY(-1px);
     }

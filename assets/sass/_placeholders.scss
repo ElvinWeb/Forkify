@@ -18,6 +18,10 @@
 
     &>*:first-child {
         margin-right: 1rem;
+
+        @media screen and (max-width: $bp-small) {
+            margin-right: 0;
+        }
     }
 }
 

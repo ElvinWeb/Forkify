@@ -44,13 +44,13 @@
     align-items: center;
     gap: 1.5rem;
 
-    & label {
+    label {
       font-size: 1.5rem;
       font-weight: 600;
       color: inherit;
     }
 
-    & input {
+    input {
       font-size: 1.5rem;
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
@@ -68,7 +68,7 @@
       }
     }
 
-    & button {
+     button {
       grid-column: 1 / span 2;
       justify-self: center;
       margin-top: 1rem;

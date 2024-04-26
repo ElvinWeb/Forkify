@@ -105,6 +105,10 @@
     margin-top: 3rem;
     @include flex(space-between, null, row wrap);
 
+    @media only screen and (max-width: $bp-large) {
+      justify-content: center;
+    }
+
   }
 
   &__nutrient-field {
@@ -116,6 +120,10 @@
     min-width: 13rem;
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
+
+    @media only screen and (max-width: $bp-large) {
+      margin: 1.5rem;
+    }
   }
 
   &__nutrient-value {
@@ -138,7 +146,14 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem 3rem;
     list-style: none;
+
+    @media screen and (max-width: $bp-small) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem 0;
+    }
+
   }
+
 
   &__ingredient {
     display: flex;
