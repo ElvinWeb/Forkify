@@ -29,6 +29,10 @@
   padding-left: 3rem;
   transition: all 0.3s;
 
+  @media screen and (max-width: $bp-small) {
+    margin-left: 5rem;
+  }
+
   &:focus-within {
     transform: translateY(-2px);
     box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);

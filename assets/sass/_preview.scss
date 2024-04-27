@@ -28,6 +28,10 @@
     position: relative;
     backface-visibility: hidden;
 
+    @media screen and (max-width: $bp-small) {
+      display: none;
+    }
+
     &::before {
       content: '';
       display: block;
