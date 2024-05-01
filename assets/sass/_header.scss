@@ -4,7 +4,7 @@
   @include flex(space-between, center, null);
 
   @media screen and (max-width: $bp-smallest) {
-    max-height: 18rem;
+    max-height: 20rem;
     flex-direction: column;
     gap: 1rem;
     padding-top: 1rem;
@@ -31,6 +31,7 @@
     @media screen and (max-width: $bp-small) {
       display: block;
     }
+
     @media screen and (max-width: $bp-smallest) {
       display: none;
     }
@@ -46,6 +47,10 @@
 
   @media screen and (max-width: $bp-small) {
     margin-left: 5rem;
+  }
+
+  @media screen and (max-width: $bp-smallest) {
+    margin-left: 3rem;
   }
 
   &:focus-within {
@@ -82,6 +87,7 @@
       @media screen and (max-width: $bp-small) {
         display: none;
       }
+
       @media screen and (max-width: $bp-smallest) {
         display: block;
         margin-left: 5px;
@@ -94,10 +100,20 @@
   align-self: stretch;
   margin-right: 2.5rem;
 
+  @media only screen and (max-width: $bp-smallest) {
+    margin-right: 0;
+  }
+
   &__list {
     list-style: none;
     display: flex;
+    justify-content: space-between;
     height: 100%;
+
+    @media screen and (max-width: $bp-smallest) {
+      padding-bottom: 2rem;
+      padding-top: 1rem;
+    }
   }
 
   &__item {
@@ -117,6 +133,10 @@
     padding: 0 1.5rem;
     transition: all 0.3s;
     @include flex(null, center, null);
+    @media screen and (max-width: $bp-smallest) {
+      padding: 1.3rem;
+    }
+
 
     svg {
       @include size(2.4rem, 2.4rem, $color-primary);
@@ -143,6 +163,9 @@
   box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
   @include visibility(hidden, 0);
   transition: all 0.5s 0.2s;
+  @media screen and (max-width: $bp-smallest) {
+   margin-top: 0.2rem;
+  }
 
   &__list {
     list-style: none;
