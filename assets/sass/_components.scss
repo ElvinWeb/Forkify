@@ -52,7 +52,9 @@
 
     @media screen and (max-width: $bp-small) {
       display: none;
-
+    }
+    @media screen and (max-width: $bp-smallest) {
+      display: block;
     }
   }
 
@@ -118,14 +120,6 @@
   }
 }
 
-.heading--2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: $color-primary;
-  text-transform: uppercase;
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
 
 .link:link,
 .link:visited {

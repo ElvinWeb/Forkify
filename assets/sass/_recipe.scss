@@ -2,6 +2,11 @@
   background-color: $color-grey-light-1;
   border-left: 3px solid $color-primary;
 
+  @media only screen and (max-width: $bp-smallest) {
+    border-left: none;
+    border-top: 3px solid $color-primary;
+  }
+
   &__fig {
     height: 32rem;
     position: relative;
@@ -97,12 +102,11 @@
     padding: 2rem 8rem 6rem 8rem;
 
     h3 {
-      margin: 0;
+      margin: 0
     }
   }
 
   &__nutrients {
-    margin-top: 3rem;
     @include flex(space-between, null, row wrap);
 
     @media only screen and (max-width: $bp-large) {

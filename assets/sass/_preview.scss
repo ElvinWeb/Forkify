@@ -32,6 +32,10 @@
       display: none;
     }
 
+    @media screen and (max-width: $bp-smallest) {
+      display: block;
+    }
+
     &::before {
       content: '';
       display: block;
