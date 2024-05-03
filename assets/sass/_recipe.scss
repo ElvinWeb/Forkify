@@ -66,24 +66,31 @@
     &:not(:last-child) {
       margin-right: 4.5rem;
     }
+
+    &-icon {
+      @include size(2.35rem, 2.35rem, null);
+      fill: $color-primary;
+      margin-right: 1.15rem;
+    }
+
+    &-data {
+      margin-right: 0.5rem;
+      font-weight: 700;
+    }
+
+    &-buttons {
+      display: flex;
+      margin-left: 1.6rem;
+      transform: translateY(-1px);
+    }
+
+    &-text {
+      @media screen and (max-width: $bp-small) {
+        display: none;
+      }
+    }
   }
 
-  &__info-icon {
-    @include size(2.35rem, 2.35rem, null);
-    fill: $color-primary;
-    margin-right: 1.15rem;
-  }
-
-  &__info-data {
-    margin-right: 0.5rem;
-    font-weight: 700;
-  }
-
-  &__info-buttons {
-    display: flex;
-    margin-left: 1.6rem;
-    transform: translateY(-1px);
-  }
 
   &__user-generated {
     background-color: darken($color-grey-light-2, 2%);

@@ -133,6 +133,7 @@
     padding: 0 1.5rem;
     transition: all 0.3s;
     @include flex(null, center, null);
+
     @media screen and (max-width: $bp-smallest) {
       padding: 1.3rem;
     }
@@ -163,12 +164,27 @@
   box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
   @include visibility(hidden, 0);
   transition: all 0.5s 0.2s;
+
+  @media screen and (max-width: $bp-small) {
+    width: 270px;
+  }
+
   @media screen and (max-width: $bp-smallest) {
-   margin-top: 0.2rem;
+    width: 330px;
+  }
+
+  @media screen and (max-width: $bp-smallest) {
+    margin-top: 0.2rem;
   }
 
   &__list {
     list-style: none;
+
+    .preview__fig {
+      @media screen and (max-width: $bp-small) {
+        display: block;
+      }
+    }
   }
 
   &__field {

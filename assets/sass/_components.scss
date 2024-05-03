@@ -53,6 +53,7 @@
     @media screen and (max-width: $bp-small) {
       display: none;
     }
+
     @media screen and (max-width: $bp-smallest) {
       display: block;
     }
@@ -152,6 +153,10 @@
   margin: 0 auto;
   padding: 5rem 4rem;
   display: flex;
+
+  @media screen and (max-width: $bp-small) {
+    padding: 5rem 2.5rem;
+  }
 
   svg {
     @include size(3rem, 3rem, $color-primary);

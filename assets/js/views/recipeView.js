@@ -68,30 +68,34 @@ class RecipeView extends View {
         </div>
 
         ${
-          `
+          this._data.calories &&
+          this._data.carbs &&
+          this._data.proteins &&
+          this._data.fats
+            ? `
         <div class="recipe__nutritional-data">  
           <h2 class="heading--2">Nutritions / serving</h2>
           <div class="recipe__nutrients">
             <div class="recipe__nutrient-field recipe__calories">
               <h3 class="heading--3">Calories</h3>
-              <span class="recipe__nutrient-value">${this._data.calories ? "" : "900"} kcal</span>
+              <span class="recipe__nutrient-value">${this._data.calories} kcal</span>
             </div>
             <div class="recipe__nutrient-field recipe__carbs">
               <h3 class="heading--3">Carbs</h3>
-              <span class="recipe__nutrient-value">${this._data.carbs ? "" : "900"} g</span>
+              <span class="recipe__nutrient-value">${this._data.carbs} g</span>
             </div>
             <div class="recipe__nutrient-field recipe__proteins">
               <h3 class="heading--3">Proteins</h3>
-              <span class="recipe__nutrient-value">${this._data.proteins ? "" : "900"} g</span>
+              <span class="recipe__nutrient-value">${this._data.proteins} g</span>
             </div>
             <div class="recipe__nutrient-field recipe__fats">
               <h3 class="heading--3">Fats</h3>
-              <span class="recipe__nutrient-value">${this._data.fats ? "" : "900"} g</span>
+              <span class="recipe__nutrient-value">${this._data.fats} g</span>
             </div>
           </div>
         </div>
         `
-            
+            : ""
         }
 
         <div class="recipe__ingredients">
