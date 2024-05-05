@@ -1,5 +1,6 @@
 {
   "name": "fokify",
+  "browserslist": "last 2 versions, > 0.5% and ie >= 11",
   "version": "1.0.0",
   "description": "Recipe App",
   "default": "index.html",
