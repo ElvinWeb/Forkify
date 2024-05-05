@@ -51,27 +51,28 @@ export const loadRecipe = async function (id) {
       )
       .join("\n");
 
-    const ingredientsData = await AJAX(
-      `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
-      {
-        ingredientList: ingredientList,
-        servings: state.recipe.servings,
-        includeNutrition: true,
-      },
-      "application/x-www-form-urlencoded"
-    );
+    // const ingredientsData = await AJAX(
+    //   `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
+    //   {
+    //     ingredientList: ingredientList,
+    //     servings: state.recipe.servings,
+    //     includeNutrition: true,
+    //   },
+    //   "application/x-www-form-urlencoded"
+    // );
 
-    const calories = getTotalNutrientAmount(ingredientsData, "calories");
-    const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
-    const proteins = getTotalNutrientAmount(ingredientsData, "protein");
-    const fats = getTotalNutrientAmount(ingredientsData, "fat");
+    // const calories = getTotalNutrientAmount(ingredientsData, "calories");
+    // const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
+    // const proteins = getTotalNutrientAmount(ingredientsData, "protein");
+    // const fats = getTotalNutrientAmount(ingredientsData, "fat");
 
-    state.recipe.calories = Math.floor(calories / state.recipe.servings);
-    state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
-    state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
-    state.recipe.fats = Math.floor(fats / state.recipe.servings);
+    // state.recipe.calories = Math.floor(calories / state.recipe.servings);
+    // state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
+    // state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
+    // state.recipe.fats = Math.floor(fats / state.recipe.servings);
 
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };
@@ -93,6 +94,7 @@ export const loadSearchResults = async function (query) {
     });
     state.search.page = 1;
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };
@@ -162,6 +164,7 @@ export const uploadRecipe = async function (newRecipe) {
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
   } catch (err) {
+    console.log(err);
     throw err;
   }
 };
