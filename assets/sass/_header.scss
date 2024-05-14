@@ -46,7 +46,7 @@
   transition: all 0.3s;
 
   @media screen and (max-width: $bp-small) {
-    margin-left: 5rem;
+    margin-left: 1rem;
   }
 
   @media screen and (max-width: $bp-smallest) {
@@ -66,6 +66,20 @@
     font-size: 1.7rem;
     width: 30rem;
 
+    @media only screen and (max-width: $bp-large) {
+      width: 22rem;
+    }
+
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 25rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      width: 18rem;
+    }
+
+
     &:focus {
       outline: none;
     }
@@ -74,9 +88,6 @@
       color: $color-grey-light-3;
     }
 
-    @media only screen and (max-width: $bp-medium) {
-      width: auto;
-    }
   }
 
   &__btn {
@@ -113,6 +124,8 @@
     @media screen and (max-width: $bp-smallest) {
       padding-bottom: 2rem;
       padding-top: 1rem;
+      justify-content: space-around;
+      margin-right: 2rem;
     }
   }
 
@@ -170,12 +183,11 @@
   }
 
   @media screen and (max-width: $bp-smallest) {
-    width: 330px;
-  }
-
-  @media screen and (max-width: $bp-smallest) {
+    width: 270px;
     margin-top: 0.2rem;
   }
+
+  
 
   &__list {
     list-style: none;
