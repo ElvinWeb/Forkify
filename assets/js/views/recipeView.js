@@ -24,7 +24,7 @@ class RecipeView extends View {
             <span class="recipe__info-data recipe__info-data--minutes">${
               this._data.cookingTime
             }</span>
-            <span class="recipe__info-text">minutes</span>
+            <span class="recipe__info-text">min</span>
           </div>
           <div class="recipe__info">
             <svg class="recipe__info-icon">
@@ -33,7 +33,7 @@ class RecipeView extends View {
             <span class="recipe__info-data recipe__info-data--people">${
               this._data.servings
             }</span>
-            <span class="recipe__info-text">servings</span>
+            <span class="recipe__info-text recipe__info-user">servings</span>
 
             <div class="recipe__info-buttons">
               <button class="btn--tiny btn--update-servings" data-update-to="${
