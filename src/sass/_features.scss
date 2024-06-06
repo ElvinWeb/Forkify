@@ -1,24 +1,26 @@
 .features {
     @include flex(space-between, null, row wrap);
     place-content: center;
-    column-gap: 3.2rem;
+    row-gap: 4rem;
     padding: 0 3rem;
     margin-top: 3rem;
 
     @media only screen and (max-width: $bp-large) {
-       column-gap: 6.5rem;
+        column-gap: 6.5rem;
     }
+
     @media only screen and (max-width: $bp-smallest) {
         padding-bottom: 1rem;
-     }
+    }
 
     &__feature-box {
-        max-width: 24rem;
-        box-shadow: 0.8rem 1.5rem 2rem rgba(#000, 0.1);
+        width: 80%;
         border-radius: 1rem;
         margin-top: 3rem;
         padding: 2.8rem 3.2rem;
         transition: all 0.2s;
+        cursor: pointer;
+        box-shadow:  rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, $color-primary 0px 0px 0px 1px;
 
         &:hover {
             transform: scale(1.03);
