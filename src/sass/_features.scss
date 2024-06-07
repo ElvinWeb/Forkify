@@ -3,7 +3,7 @@
     place-content: center;
     row-gap: 4rem;
     padding: 0 3rem;
-    margin-top: 3rem;
+    margin-top: 5rem;
 
     @media only screen and (max-width: $bp-large) {
         column-gap: 6.5rem;
@@ -20,7 +20,7 @@
         padding: 2.8rem 3.2rem;
         transition: all 0.2s;
         cursor: pointer;
-        box-shadow:  rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, $color-primary 0px 0px 0px 1px;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, $color-primary 0px 0px 0px 1px;
 
         &:hover {
             transform: scale(1.03);
@@ -42,4 +42,5 @@
 
 .section__features--header {
     margin-top: 4.5rem;
+    padding: 0px 15px;
 }
