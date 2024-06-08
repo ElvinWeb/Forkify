@@ -36,177 +36,176 @@
       display: none;
     }
   }
-}
 
-.search {
-  background-color: #fff;
-  border-radius: 10rem;
-  @include flex(null, center, null);
-  padding-left: 3rem;
-  transition: all 0.3s;
+  .search {
+    background-color: #fff;
+    border-radius: 10rem;
+    @include flex(null, center, null);
+    padding-left: 3rem;
+    transition: all 0.3s;
 
-  @media screen and (max-width: $bp-small) {
-    margin-left: 1rem;
-  }
-
-  &:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
-  }
-
-  &__field {
-    border: none;
-    background: none;
-    font-family: inherit;
-    color: inherit;
-    font-size: 1.7rem;
-    width: 30rem;
-
-    @media only screen and (max-width: $bp-large) {
-      width: 22rem;
+    @media screen and (max-width: $bp-small) {
+      margin-left: 1rem;
     }
 
-
-    @media only screen and (max-width: $bp-medium) {
-      width: 25rem;
+    &:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 0.7rem 3rem rgba($color-grey-dark-1, 0.08);
     }
 
-    @media only screen and (max-width: $bp-small) {
-      width: 18rem;
-    }
+    &__field {
+      border: none;
+      background: none;
+      font-family: inherit;
+      color: inherit;
+      font-size: 1.7rem;
+      width: 30rem;
 
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      color: $color-grey-light-3;
-    }
-
-  }
-
-  &__btn {
-    font-weight: 600;
-    font-family: inherit;
-
-    span {
-      @media screen and (max-width: $bp-small) {
-        display: none;
+      @media only screen and (max-width: $bp-large) {
+        width: 22rem;
       }
+
+
+      @media only screen and (max-width: $bp-medium) {
+        width: 25rem;
+      }
+
+      @media only screen and (max-width: $bp-small) {
+        width: 18rem;
+      }
+
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $color-grey-light-3;
+      }
+
+    }
+
+    &__btn {
+      font-weight: 600;
+      font-family: inherit;
+
+      span {
+        @media screen and (max-width: $bp-small) {
+          display: none;
+        }
+
+        @media screen and (max-width: $bp-smallest) {
+          display: block;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .nav {
+    align-self: stretch;
+    margin-right: 2.5rem;
+
+    @media only screen and (max-width: $bp-smallest) {
+      margin-right: 0;
+    }
+
+    &__list {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
 
       @media screen and (max-width: $bp-smallest) {
-        display: block;
-        margin-left: 5px;
+        padding-top: 1rem;
+        justify-content: space-around;
       }
     }
-  }
-}
 
-.nav {
-  align-self: stretch;
-  margin-right: 2.5rem;
-
-  @media only screen and (max-width: $bp-smallest) {
-    margin-right: 0;
-  }
-
-  &__list {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-
-    @media screen and (max-width: $bp-smallest) {
-      padding-top: 1rem;
-      justify-content: space-around;
-    }
-  }
-
-  &__item {
-    position: relative;
-  }
-
-  &__btn {
-    height: 100%;
-    font-family: inherit;
-    color: inherit;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0 1.5rem;
-    transition: all 0.3s;
-    @include flex(null, center, null);
-
-    @media screen and (max-width: $bp-smallest) {
-      padding: 1.3rem;
+    &__item {
+      position: relative;
     }
 
+    &__btn {
+      height: 100%;
+      font-family: inherit;
+      color: inherit;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 1.5rem;
+      transition: all 0.3s;
+      @include flex(null, center, null);
 
-    svg {
-      @include size(2.4rem, 2.4rem, $color-primary);
-      margin-right: 0.7rem;
-      transform: translateY(-1px);
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:hover {
-      background-color: $color-grey-light-2;
-    }
-  }
-}
-
-.bookmarks {
-  padding: 1rem 0;
-  @include position(absolute, null, -2.5rem, null, null);
-  z-index: 10;
-  width: 40rem;
-  background-color: #fff;
-  box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
-  @include visibility(hidden, 0);
-  transition: all 0.5s 0.2s;
-
-  @media screen and (max-width: $bp-small) {
-    width: 270px;
-  }
-
-  @media screen and (max-width: $bp-smallest) {
-    width: 270px;
-    margin-top: 0.2rem;
-  }
+      @media screen and (max-width: $bp-smallest) {
+        padding: 1.3rem;
+      }
 
 
+      svg {
+        @include size(2.4rem, 2.4rem, $color-primary);
+        margin-right: 0.7rem;
+        transform: translateY(-1px);
+      }
 
-  &__list {
-    list-style: none;
+      &:focus {
+        outline: none;
+      }
 
-    .preview__fig {
-      @media screen and (max-width: $bp-small) {
-        display: block;
+      &:hover {
+        background-color: $color-grey-light-2;
       }
     }
   }
 
-  &__field {
-    cursor: pointer;
-    padding: 0 4rem;
-    @include flex(null, center, null);
-    height: 100%;
-    transition: all 0.3s;
+  .bookmarks {
+    padding: 1rem 0;
+    @include position(absolute, null, -2.5rem, null, null);
+    z-index: 10;
+    width: 40rem;
+    background-color: #fff;
+    box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+    @include visibility(hidden, 0);
+    transition: all 0.5s 0.2s;
 
-    &:hover {
-      background-color: $color-grey-light-2;
+    @media screen and (max-width: $bp-small) {
+      width: 270px;
     }
-  }
 
-  &:hover,
-  .nav__btn--bookmarks:hover+& {
-    @include visibility(visible, 1);
+    @media screen and (max-width: $bp-smallest) {
+      width: 270px;
+    }
+
+
+
+    &__list {
+      list-style: none;
+
+      .preview__fig {
+        @media screen and (max-width: $bp-small) {
+          display: block;
+        }
+      }
+    }
+
+    &__field {
+      cursor: pointer;
+      padding: 0 4rem;
+      @include flex(null, center, null);
+      height: 100%;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $color-grey-light-2;
+      }
+    }
+
+    &:hover,
+    .nav__btn--bookmarks:hover+& {
+      @include visibility(visible, 1);
+    }
   }
 }

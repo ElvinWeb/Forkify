@@ -1,10 +1,1 @@
-@import "./base";
-@import "./mixins";
-@import "./placeholders";
-@import "./components";
-@import "./header";
-@import "./preview";
-@import "./recipe";
-@import "./features";
-@import "./searchResults";
-@import "./upload";
+@import "./variables", "./mixins", "./placeholders", "./base", "./components", "./header", "./preview", "./recipe", "./features", "./searchResults", "./upload";

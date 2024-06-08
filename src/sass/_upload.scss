@@ -20,8 +20,6 @@
     transform: translateX(-50%);
   }
 
-
-
   .btn--close-modal {
     font-family: inherit;
     color: inherit;
@@ -31,84 +29,73 @@
     border: none;
     background: none;
   }
-}
 
-.overlay {
-  @include position(fixed, 0, null, null, 0);
-  @include size(100%, 100%, null);
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 100;
-  transition: all 0.5s;
-}
-
-.hidden {
-  @include visibility(hidden, 0);
-}
-
-.upload {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem 6rem;
-
-  @media screen and (max-width: $bp-small) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-
-  &__column {
+  .upload {
     display: grid;
-    grid-template-columns: 1fr 2.8fr;
-    align-items: center;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem 6rem;
 
     @media screen and (max-width: $bp-small) {
       grid-template-columns: 1fr;
       gap: 1rem;
     }
 
-    label {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: inherit;
-    }
 
-    input {
-      font-size: 1.5rem;
-      padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 0.5rem;
-      transition: all 0.2s;
+    &__column {
+      display: grid;
+      grid-template-columns: 1fr 2.8fr;
+      align-items: center;
+      gap: 1.5rem;
 
-      &::placeholder {
-        color: $color-grey-light-3;
+      @media screen and (max-width: $bp-small) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
 
-      &:focus {
-        outline: none;
-        border: 1px solid $color-primary;
-        background-color: $color-grey-light-1;
+      label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: inherit;
+      }
+
+      input {
+        font-size: 1.5rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        transition: all 0.2s;
+
+        &::placeholder {
+          color: $color-grey-light-3;
+        }
+
+        &:focus {
+          outline: none;
+          border: 1px solid $color-primary;
+          background-color: $color-grey-light-1;
+        }
+      }
+
+      button {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        margin-top: 1rem;
       }
     }
 
-    button {
-      grid-column: 1 / span 2;
+    &__heading {
+      font-size: 2.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      grid-column: 1/-1;
+    }
+
+    &__btn {
+      grid-column: 1 / -1;
       justify-self: center;
-      margin-top: 1rem;
     }
-  }
-
-  &__heading {
-    font-size: 2.25rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    grid-column: 1/-1;
-  }
-
-  &__btn {
-    grid-column: 1 / -1;
-    justify-self: center;
   }
 }
+
+

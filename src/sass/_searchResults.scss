@@ -8,41 +8,41 @@
     list-style: none;
     margin-bottom: 2rem;
   }
-}
 
-.pagination {
-  margin-top: auto;
-  padding: 0rem 3.5rem 5.5rem;
-  position: relative;
+  .pagination {
+    margin-top: auto;
+    padding: 0rem 3.5rem 5.5rem;
+    position: relative;
 
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-
-  &__btn {
-    &--prev {
-      float: left;
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
     }
 
-    &--next {
-      float: right;
+    &__btn {
+      &--prev {
+        float: left;
+      }
+
+      &--next {
+        float: right;
+      }
     }
-  }
 
-  &__label {
-    @include position(absolute, null, null, -0.5rem, 0);
-    font-size: 1.5rem;
-    padding: 1rem 4rem 1rem 2rem;
-    background-color: $color-primary;
-    color: $color-white;
-    font-weight: 700;
-    clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
-    transition: all 0.2s ease;
+    &__label {
+      @include position(absolute, null, null, -0.5rem, 0);
+      font-size: 1.5rem;
+      padding: 1rem 4rem 1rem 2rem;
+      background-color: $color-primary;
+      color: $color-white;
+      font-weight: 700;
+      clip-path: polygon(0 0, 100% 0, 85% 50%, 100% 100%, 0 100%);
+      transition: all 0.2s ease;
 
-    &:hover {
-      padding-left: 3rem;
+      &:hover {
+        padding-left: 3rem;
+      }
     }
   }
 }
