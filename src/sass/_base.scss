@@ -55,6 +55,7 @@ body {
     grid-template-areas:
       'head head'
       'list recipe';
+      // height: 130em;
   }
 
   @media only screen and (max-width: $bp-smallest) {
@@ -65,6 +66,7 @@ body {
       "list"
       "recipe";
     max-width: 100%;
+    // height: 140rem;
   }
 
 }
@@ -100,14 +102,23 @@ body {
   @include visibility(hidden, 0);
 }
 
-@keyframes centerIntro {
-  from {
-    transform: translateY(80vh);
-    opacity: 0.2;
-  }
+// @keyframes centerIntro {
+//   from {
+//     transform: translateY(80vh);
+//     opacity: 0.2;
+//   }
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+//   to {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-primary;
+  border-radius: 500px;
 }

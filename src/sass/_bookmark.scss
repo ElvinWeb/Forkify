@@ -1,0 +1,52 @@
+.bookmarks {
+    padding: 1rem 0;
+    @include position(absolute, null, -2.5rem, null, null);
+    @include visibility(hidden, 0);
+    z-index: 10;
+    width: 38rem;
+    background-color: #fff;
+    box-shadow: 0 0.8rem 5rem 2rem rgba($color-grey-dark-1, 0.1);
+    transition: all 0.5s 0.2s;
+    overflow-y: scroll;
+    max-height: 370px;
+
+    @media screen and (max-width: $bp-medium) {
+        max-height: 300px;
+        width: 35rem;
+    }
+
+    @media screen and (max-width: $bp-small) {
+        width: 31rem;
+    }
+
+    @media screen and (max-width: $bp-smallest) {
+        max-height: 215px;
+    }
+
+    &__list {
+        list-style: none;
+
+        .preview__fig {
+            @media screen and (max-width: $bp-small) {
+                display: block;
+            }
+        }
+    }
+
+    &__field {
+        cursor: pointer;
+        padding: 0 4rem;
+        @include flex(null, center, null);
+        height: 100%;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: $color-grey-light-2;
+        }
+    }
+
+    &:hover,
+    .nav__btn--bookmarks:hover+& {
+        @include visibility(visible, 1);
+    }
+}

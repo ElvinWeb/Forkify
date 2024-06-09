@@ -12,7 +12,7 @@ $color-grey--2: #383838; // Lines / alternative
 
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
 
-$bp-large: 78.15em;
-$bp-medium: 62em;
-$bp-small: 48em;
-$bp-smallest: 36em;
+$bp-large: 78.15em; //1250px
+$bp-medium: 62em; // 992px
+$bp-small: 48em; //768px
+$bp-smallest: 36em; // 576px
