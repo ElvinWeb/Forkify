@@ -19,9 +19,6 @@
         width: 31rem;
     }
 
-    @media screen and (max-width: $bp-smallest) {
-        max-height: 215px;
-    }
 
     &__list {
         list-style: none;
