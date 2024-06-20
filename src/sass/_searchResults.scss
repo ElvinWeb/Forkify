@@ -1,10 +1,10 @@
 .search-results {
-  padding: 2rem 0;
+  padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 20px -15px inset, rgba(0, 0, 0, 0.3) 0px 10px 36px -18px inset;
 
-  .results {
+  &__list {
     list-style: none;
     margin-bottom: 2rem;
   }

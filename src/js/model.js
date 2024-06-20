@@ -2,6 +2,7 @@ import {
   API_URL,
   RES_PER_PAGE,
   API_KEY,
+  BASE_API_URL,
   SPOONACULAR_API_KEY,
   SPOONACULAR_API_URL,
 } from "./config.js";
@@ -70,7 +71,6 @@ export const loadRecipe = async function (id) {
     state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
     state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
     state.recipe.fats = Math.floor(fats / state.recipe.servings);
-
   } catch (err) {
     console.log(err);
     throw err;
@@ -81,6 +81,8 @@ export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
     const data = await AJAX(`${API_URL}?search=${query}&key=${API_KEY}`);
+    console.log(data);
+
     const { recipes } = data.data;
 
     state.search.results = recipes.map((recipe) => {
@@ -114,6 +116,11 @@ export const updateServings = function (newServings) {
   });
   state.recipe.servings = newServings;
 };
+export const filterIngredients = function () {
+  state.recipe.ingredients.reduce((acc, cur) => acc + cur, 0);
+};
+export const filterMinutes = function () {};
+
 const persistBookmarks = function () {
   localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
