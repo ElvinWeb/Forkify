@@ -2,11 +2,17 @@ import {
   API_URL,
   RES_PER_PAGE,
   API_KEY,
+  API_URLS,
   BASE_API_URL,
   SPOONACULAR_API_KEY,
   SPOONACULAR_API_URL,
+  SERVINGS_TO_UPLOAD,
 } from "./config.js";
-import { AJAX, getTotalNutrientAmount } from "./helpers.js";
+import {
+  AJAX,
+  formatIngredientsArr,
+  getTotalNutrientAmount,
+} from "./helpers.js";
 
 export const state = {
   recipe: {},
@@ -37,7 +43,7 @@ const createRecipeObject = function (data) {
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await AJAX(`${API_URL}/${id}?key=${API_KEY}`);
+    const data = await AJAX(API_URLS.recipes(id));
     state.recipe = createRecipeObject(data);
 
     if (state.bookmarks.some((bookmark) => bookmark.id === id)) {
@@ -46,33 +52,32 @@ export const loadRecipe = async function (id) {
       state.recipe.bookmarked = false;
     }
 
-    const ingredientList = state.recipe.ingredients
-      .map(
-        (ing) => `${ing.quantity ?? ""} ${ing.unit ?? ""} ${ing.description}`
-      )
-      .join("\n");
+    // const ingredientList = state.recipe.ingredients
+    //   .map(
+    //     (ing) => `${ing.quantity ?? ""} ${ing.unit ?? ""} ${ing.description}`
+    //   )
+    //   .join("\n");
 
-    const ingredientsData = await AJAX(
-      `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
-      {
-        ingredientList: ingredientList,
-        servings: state.recipe.servings,
-        includeNutrition: true,
-      },
-      "application/x-www-form-urlencoded"
-    );
+    // const ingredientsData = await AJAX(
+    //   `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
+    //   {
+    //     ingredientList: ingredientList,
+    //     servings: state.recipe.servings,
+    //     includeNutrition: true,
+    //   },
+    //   "application/x-www-form-urlencoded"
+    // );
 
-    const calories = getTotalNutrientAmount(ingredientsData, "calories");
-    const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
-    const proteins = getTotalNutrientAmount(ingredientsData, "protein");
-    const fats = getTotalNutrientAmount(ingredientsData, "fat");
+    // const calories = getTotalNutrientAmount(ingredientsData, "calories");
+    // const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
+    // const proteins = getTotalNutrientAmount(ingredientsData, "protein");
+    // const fats = getTotalNutrientAmount(ingredientsData, "fat");
 
-    state.recipe.calories = Math.floor(calories / state.recipe.servings);
-    state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
-    state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
-    state.recipe.fats = Math.floor(fats / state.recipe.servings);
+    // state.recipe.calories = Math.floor(calories / state.recipe.servings);
+    // state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
+    // state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
+    // state.recipe.fats = Math.floor(fats / state.recipe.servings);
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };
@@ -80,7 +85,7 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const data = await AJAX(`${API_URL}?search=${query}&key=${API_KEY}`);
+    const data = await AJAX(API_URLS.search(query));
     console.log(data);
 
     const { recipes } = data.data;
@@ -119,8 +124,6 @@ export const updateServings = function (newServings) {
 export const filterIngredients = function () {
   state.recipe.ingredients.reduce((acc, cur) => acc + cur, 0);
 };
-export const filterMinutes = function () {};
-
 const persistBookmarks = function () {
   localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
@@ -143,35 +146,34 @@ const init = function () {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 
-init();
-
 export const uploadRecipe = async function (newRecipe) {
   try {
-    const ingredients = Object.entries(newRecipe)
-      .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
-      .map((ingredient) => {
-        const ingredientArr = ingredient[1].split(",").map((ing) => ing.trim());
-        if (ingredientArr.length !== 3) {
-          throw new Error("Invalid ingredient format");
-        }
-        const [quantity, unit, description] = ingredientArr;
-        return { quantity: quantity ? +quantity : null, unit, description };
-      });
-
+    // const ingredients = Object.entries(newRecipe)
+    //   .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
+    //   .map((ingredient) => {
+    //     const ingredientArr = ingredient[1].split(",").map((ing) => ing.trim());
+    //     if (ingredientArr.length !== 3) {
+    //       throw new Error("Invalid ingredient format");
+    //     }
+    //     const [quantity, unit, description] = ingredientArr;
+    //     return { quantity: quantity ? +quantity : null, unit, description };
+    //   });
+    const ingredients = formatIngredientsArr(newRecipe);
     const recipe = {
       title: newRecipe.title,
       source_url: newRecipe.sourceUrl,
       image_url: newRecipe.image,
       publisher: newRecipe.publisher,
       cooking_time: +newRecipe.cookingTime,
-      servings: +newRecipe.servings,
+      servings: SERVINGS_TO_UPLOAD,
       ingredients,
     };
-    const data = await AJAX(`${API_URL}?key=${API_KEY}`, recipe);
+    const data = await AJAX(API_URLS.data, recipe, `application/json`);
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };
+
+init();

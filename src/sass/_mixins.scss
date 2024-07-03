@@ -1,4 +1,4 @@
-@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+@mixin position($position, $top, $right, $bottom, $left) {
     position: $position;
 
     @if $top {
@@ -19,19 +19,17 @@
 }
 
 @mixin size($height, $width, $fill) {
+    width: $width;
+    height: $height;
+
     @if $fill {
         width: $width;
         height: $height;
         fill: $fill;
     }
-
-    @else {
-        width: $width;
-        height: $height;
-    }
 }
 
-@mixin flex($justify: null, $align: null, $flow: null) {
+@mixin flex($justify, $align, $flow) {
     display: flex;
 
     @if $align {
@@ -54,7 +52,7 @@
 
 }
 
-@mixin visibility($visibility: null, $opacity: null) {
+@mixin visibility($visibility, $opacity) {
     visibility: $visibility;
     opacity: $opacity;
 }

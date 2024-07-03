@@ -1,5 +1,5 @@
 import * as model from "./model.js";
-import { MODAL_CLOSE_SEC } from "./config.js";
+import { MODAL_CLOSE_SEC, FORBIDDEN_PATTERN } from "./config.js";
 import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
@@ -30,6 +30,11 @@ const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
     const query = searchView.getQuery();
+    const patternMatch = FORBIDDEN_PATTERN.test(query);
+    if (patternMatch) {
+      resultsView.renderError("You searched query is not allowed!");
+      return;
+    }
 
     await model.loadSearchResults(query);
     resultsView.render(model.getSearchResultsPage());
