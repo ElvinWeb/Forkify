@@ -10,6 +10,7 @@ $color-grey-dark-2: #918581; // Lighter text
 $color-grey--1: #424242; // Dark background (surface)
 $color-grey--2: #383838; // Lines / alternative
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+$gradient-1: linear-gradient(to right top, $color-grad-2, $color-grad-1);
 
 $bp-large: 78.15em; //1250px
 $bp-medium: 62em; // 992px

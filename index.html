@@ -4,34 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./src/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <!-- Google-Font cdn -->
     <link
       href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
       rel="stylesheet"
     />
     <link
-      rel="shortcut icon"
-      href="./src/img/favicon.png"
-      type="image/x-icon"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
     />
+    <!-- Font-Awesome cdn -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="./src/sass/main.scss" />
-    <script defer src="./src/js/controller.js" type="module"></script>
-    <title>Forkify ~ Where culinary delights await your fork</title>
+    <!-- Custom scss link -->
+    <link rel="stylesheet" href="./src/Scss/main.scss" />
+    <!-- Custom js link -->
+    <script defer src="./src/Javascript/controller.js" type="module"></script>
+    <title>Forkify | Where culinary delights await your fork</title>
   </head>
 
   <body>
-    <div id="intro"></div>
+    <!-- Intro Animation -->
+    <div class="intro">
+      <img
+        src="./src/img/logo.png"
+        class="fade-in intro__logo"
+        alt="intro-logo"
+      />
+    </div>
+    <!-- App Container -->
     <div class="container">
+      <!-- Header -->
       <header class="header">
+        <!-- Logo -->
         <img src="./src/img/logo.png" alt="Logo" class="header__logo" />
         <img
           src="./src/img/favicon.png"
           alt="logo"
           class="header__logo header__logo--mobile"
         />
+
+        <!-- Search -->
         <form class="search">
           <input
             type="text"
@@ -45,7 +66,7 @@
             <span>Search</span>
           </button>
         </form>
-
+        <!-- Nav Buttons -->
         <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item">
@@ -96,7 +117,9 @@
         </nav>
       </header>
 
+      <!-- Search Results -->
       <div class="search-results">
+        <!-- Recipe List -->
         <ul class="search-results__list">
           <div class="message">
             <div>
@@ -125,7 +148,7 @@
           </li>
            -->
         </ul>
-
+        <!-- Pagination -->
         <div class="pagination">
           <!-- <button class="btn--inline pagination__btn--prev">
             <svg class="search__icon">
@@ -142,6 +165,7 @@
         </div>
       </div>
 
+      <!-- Recipe Detail -->
       <section class="recipe">
         <div class="section section__features">
           <h2 class="heading--2 section__features--header">
@@ -295,7 +319,9 @@
         -->
       </section>
     </div>
+    <!-- Overlay -->
     <div class="overlay hidden"></div>
+    <!-- Upload Modal -->
     <div class="add-recipe-window hidden">
       <button class="btn--close-modal">&times;</button>
       <form class="upload">

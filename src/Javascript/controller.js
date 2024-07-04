@@ -1,5 +1,9 @@
 import * as model from "./model.js";
-import { MODAL_CLOSE_SEC, FORBIDDEN_PATTERN } from "./config.js";
+import {
+  MODAL_CLOSE_SEC,
+  FORBIDDEN_PATTERN,
+  FADE_ANIMATION_SEC,
+} from "./config.js";
 import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
@@ -84,6 +88,16 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlIntroAnimation = function () {
+  let intro = document.querySelector(".intro");
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    intro.classList.add("close");
+    document.body.style.overflow = "initial";
+  }, FADE_ANIMATION_SEC);
+};
+
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerHelper(controlRecipes);
@@ -92,6 +106,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  window.addEventListener("DOMContentLoaded", controlIntroAnimation);
 };
 
 init();
