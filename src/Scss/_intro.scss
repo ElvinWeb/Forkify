@@ -1,0 +1,20 @@
+.intro {
+    @include position(fixed, 0, null, null, 0);
+    width: 100%;
+    height: 100vh;
+    z-index: 111;
+    background: $gradient-1;
+
+    &__logo {
+        @include position(absolute, 50%, null, null, 50%);
+        transform: translate(-50%, -50%);
+        height: 12rem;
+    }
+
+    &.close {
+        opacity: 0;
+        z-index: -1;
+        transition: all 0.7s;
+    }
+
+}

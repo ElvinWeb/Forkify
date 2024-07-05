@@ -10,6 +10,7 @@ import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import bookmarksView from "./views/bookmarksView.js";
 import addRecipeView from "./views/addRecipeView.js";
+import introView from "./views/introView.js";
 
 import "core-js/actual";
 import "regenerator-runtime/runtime";
@@ -89,12 +90,16 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const controlIntroAnimation = function () {
-  let intro = document.querySelector(".intro");
+  const intro = document.querySelector(".intro");
+  const container = document.querySelector(".container");
   document.body.style.overflow = "hidden";
+
+  introView.render(model.state.recipe);
 
   setTimeout(() => {
     intro.classList.add("close");
     document.body.style.overflow = "initial";
+    container.classList.add("container-intro");
   }, FADE_ANIMATION_SEC);
 };
 
@@ -106,7 +111,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  window.addEventListener("DOMContentLoaded", controlIntroAnimation);
+  introView.addHandlerIntro(controlIntroAnimation);
 };
 
 init();
