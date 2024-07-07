@@ -16,7 +16,8 @@ class RecipeView extends View {
           </h1>
         </figure>
 
-        <div class="recipe__details">
+      <div class="recipe__details">
+        <div class="recipe__data">
           <div class="recipe__info">
             <svg class="recipe__info-icon">
               <use href="${icons}#icon-clock"></use>
@@ -52,7 +53,9 @@ class RecipeView extends View {
               </button>
             </div>
           </div>
-
+        </div>  
+            
+        <div class="recipe__buttons">
           <div class="recipe__user-generated ${this._data.key ? "" : "hidden"}">
             <svg>
               <use href="${icons}#icon-user"></use>
@@ -60,12 +63,11 @@ class RecipeView extends View {
           </div>
           <button class="btn--round btn--bookmark">
             <svg class="">
-              <use href="${icons}#icon-bookmark${
-      this._data.bookmarked ? "-fill" : ""
-    }"></use>
+              <use href="${icons}#icon-bookmark${this._data.bookmarked ? "-fill" : ""}"></use>
             </svg>
           </button>
         </div>
+      </div>
 
         ${
           this._data.calories &&

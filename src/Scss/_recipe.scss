@@ -50,14 +50,48 @@
       width: 70%;
       font-size: 3rem;
     }
+
     @media only screen and (max-width: $bp-small) {
       font-size: 2.5rem;
     }
   }
 
+  &__data,
+  &__buttons {
+    display: flex;
+
+    @media screen and (max-width: $bp-small) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: $bp-smallest) {
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: 455px) {
+      flex-direction: column;
+    }
+  }
+
+  &__data {
+    @media screen and (max-width: $bp-small) {
+      row-gap: 3.5rem;
+    }
+  }
+  &__buttons {
+    column-gap: 1.5rem;
+    @media screen and (max-width: $bp-small) {
+      row-gap: 1rem;
+    }
+  }
+
   &__details {
-    @include flex(null, center, null);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 7.5rem 8rem 3.5rem 8rem;
+
   }
 
   &__info {
@@ -67,6 +101,7 @@
 
     &:not(:last-child) {
       margin-right: 4.5rem;
+
       @media screen and (max-width: $bp-small) {
         margin-right: 2.5rem;
       }
@@ -89,21 +124,18 @@
       transform: translateY(-1px);
     }
 
-    &-user {
-      @media screen and (max-width: $bp-small) {
-        display: none;
-      }
-    }
+    // &-user {
+    //   @media screen and (max-width: $bp-small) {
+    //     display: none;
+    //   }
+    // }
   }
-
 
   &__user-generated {
     background-color: darken($color-grey-light-2, 2%);
     @include flex(center, center, null);
-    @include size(4rem, 4rem, null);
-    border-radius: 10rem;
-    margin-left: auto;
-    margin-right: 1.75rem;
+    @include size(4.5rem, 4.5rem, null);
+    border-radius: 50%;
 
     svg {
       @include size(2.25rem, 2.25rem, $color-primary);
@@ -169,7 +201,6 @@
     }
 
   }
-
 
   &__ingredient {
     display: flex;

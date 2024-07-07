@@ -5,7 +5,7 @@ const API_KEY = "a3a17dd3-d5ba-4a69-b796-e2ac3fa11dcb";
 const TIMEOUT_SEC = 10;
 const FADE_ANIMATION_SEC = 2500;
 const RES_PER_PAGE = 15;
-const MODAL_CLOSE_SEC = 2;
+const MODAL_CLOSE_SEC = 2000;
 const SERVINGS_TO_UPLOAD = 4;
 const FORBIDDEN_PATTERN = /[\d,;!@#$%^&*()_+\=\[\]{}|\\:";'<>?,./]/;
 const API_URLS = {

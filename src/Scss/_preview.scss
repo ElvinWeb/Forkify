@@ -8,14 +8,16 @@
       transition: all 0.3s;
       text-decoration: none;
     }
-
+    
     &:hover {
       background-color: $color-grey-light-1;
+      border-left: 3px solid $color-primary;
       transform: translateY(-2px);
     }
-
+    
     &--active {
       background-color: $color-grey-light-1;
+      border-left: 3px solid $color-primary;
     }
   }
 

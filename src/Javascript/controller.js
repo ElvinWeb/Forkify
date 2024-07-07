@@ -79,14 +79,15 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderMessage();
     bookmarksView.render(model.state.bookmarks);
     window.history.pushState(null, "", `#${model.state.recipe.id}`);
-    window.history.back();
-    setTimeout(function () {
-      addRecipeView.toggleWindow();
-    }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
     addRecipeView.renderError(err);
     console.log(err);
   }
+  
+  setTimeout(function () {
+    addRecipeView.toggleWindow();
+    location.reload();
+  }, MODAL_CLOSE_SEC);
 };
 
 const controlIntroAnimation = function () {

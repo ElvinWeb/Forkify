@@ -1,6 +1,6 @@
 .bookmarks {
     padding: 1rem 0;
-    @include position(absolute, null, -2.9rem, null, null);
+    @include position(absolute, null, -3rem, null, null);
     @include visibility(hidden, 0);
     z-index: 10;
     width: 38rem;
@@ -12,16 +12,19 @@
 
     @media screen and (max-width: $bp-medium) {
         max-height: 300px;
-        right: -3.9rem;
+        right: -3.7rem;
     }
 
     @media screen and (max-width: $bp-small) {
-        width: 31rem;
-        top: 7.8rem;
+        width: 32rem;
+        right: -3.8rem;
+        top: 10rem;
     }
 
     @media screen and (max-width: $bp-smallest) {
-        width: 35rem;
+        width: 36rem;
+        top: 7.9rem;
+        right: -2.5rem;
     }
 
     &__list {

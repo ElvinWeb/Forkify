@@ -148,23 +148,14 @@ const init = function () {
 
 export const uploadRecipe = async function (newRecipe) {
   try {
-    // const ingredients = Object.entries(newRecipe)
-    //   .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
-    //   .map((ingredient) => {
-    //     const ingredientArr = ingredient[1].split(",").map((ing) => ing.trim());
-    //     if (ingredientArr.length !== 3) {
-    //       throw new Error("Invalid ingredient format");
-    //     }
-    //     const [quantity, unit, description] = ingredientArr;
-    //     return { quantity: quantity ? +quantity : null, unit, description };
-    //   });
     const ingredients = formatIngredientsArr(newRecipe);
+    
     const recipe = {
       title: newRecipe.title,
       source_url: newRecipe.sourceUrl,
-      image_url: newRecipe.image,
+      image_url: newRecipe.image.name,
       publisher: newRecipe.publisher,
-      cooking_time: +newRecipe.cookingTime,
+      cooking_time: Number(newRecipe.cookingTime),
       servings: SERVINGS_TO_UPLOAD,
       ingredients,
     };

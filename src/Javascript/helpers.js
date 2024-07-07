@@ -75,5 +75,7 @@ export const formatIngredientsArr = function (newRecipe) {
       description: ingDescription[i][2],
     });
   }
+
+  
   return ingredients;
 };
