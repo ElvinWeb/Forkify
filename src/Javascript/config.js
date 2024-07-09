@@ -17,6 +17,7 @@ const API_URLS = {
   },
   data: `${API_URL}?key=${API_KEY}`,
 };
+
 export {
   API_KEY,
   SPOONACULAR_API_URL,

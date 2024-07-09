@@ -7,7 +7,7 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
-export const AJAX = async function (
+const AJAX = async function (
   url,
   uploadData = undefined,
   contentType = undefined
@@ -35,7 +35,7 @@ export const AJAX = async function (
     throw err;
   }
 };
-export const getTotalNutrientAmount = function (ingredientsArr, nutrient) {
+const getTotalNutrientAmount = function (ingredientsArr, nutrient) {
   return ingredientsArr
     .map(
       (ing) =>
@@ -45,7 +45,7 @@ export const getTotalNutrientAmount = function (ingredientsArr, nutrient) {
     )
     .reduce((acc, ingNutr) => acc + ingNutr, 0);
 };
-export const formatIngredientsArr = function (newRecipe) {
+const formatIngredientsArr = function (newRecipe) {
   const ingredientsDataArr = Object.entries(newRecipe)
     .filter((entry) => entry[0].startsWith("ingredient"))
     .map((ingData) => {
@@ -76,6 +76,7 @@ export const formatIngredientsArr = function (newRecipe) {
     });
   }
 
-  
   return ingredients;
 };
+
+export { AJAX, getTotalNutrientAmount, formatIngredientsArr };

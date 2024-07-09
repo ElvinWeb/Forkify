@@ -162,43 +162,52 @@
 
       <!-- Recipe -->
       <section class="recipe">
-        <!-- App info -->
-        <div class="section section__features">
-          <h2 class="heading--2 section__features--header">
+        <!-- App features -->
+        <div class="section features">
+          <h2 class="heading--2 features__header">
             Start Cooking with Forkify - Your All-In-One Recipe App!
           </h2>
-          <div class="features">
+          <div class="features__column">
             <div class="features__feature-box">
               <div class="features__icon">
-                <svg>
-                  <use href="./src/img/icons.svg#icon-search"></use>
-                </svg>
+                <i class="fa-solid fa-magnifying-glass"></i>
               </div>
               <h3 class="heading--3">Search over 1,000,000 recipes</h3>
               <p class="features__description">
-                You can search over a million different recipes and ingredients.
+                Discover a vast collection of over one million recipes and
+                ingredients, tailored to suit every taste and occasion.
               </p>
             </div>
             <div class="features__feature-box">
               <div class="features__icon">
-                <svg>
-                  <use href="./src/img/icons.svg#icon-edit"></use>
-                </svg>
+                <i class="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3 class="heading--3">Add your favorite recipes</h3>
+              <h3 class="heading--3">Upload your favorite recipes</h3>
               <p class="features__description">
-                You can add ingredients and details of your own dish.
+                Share your culinary creations by adding ingredients and detailed
+                instructions for your own dishes.
               </p>
             </div>
             <div class="features__feature-box">
               <div class="features__icon">
-                <svg>
-                  <use href="./src/img/icons.svg#icon-bookmark"></use>
-                </svg>
+                <i class="fa-regular fa-bookmark"></i>
               </div>
-              <h3 class="heading--3">Add recipe to Bookmark</h3>
+              <h3 class="heading--3">Add recipe to bookmarks</h3>
               <p class="features__description">
-                You can bookmarked your favorite recipe and check it again.
+                Easily save and revisit your favorite recipes by adding them to
+                your personalized bookmarks.
+              </p>
+            </div>
+            <div class="features__feature-box">
+              <div class="features__icon">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <h3 class="heading--3">
+                Adjust your ingredients according to servings
+              </h3>
+              <p class="features__description">
+                Customize ingredient quantities based on the number of servings
+                you need, ensuring perfect proportions every time.
               </p>
             </div>
           </div>
@@ -216,19 +225,19 @@
           <h3 class="upload__heading">Recipe data (4 servings)</h3>
           <div class="upload__input-group upload__input-group--title">
             <label>Title</label>
-            <input value="" required name="title" type="text" />
+            <input value="" name="title" type="text" required />
           </div>
           <div class="upload__input-group upload__input-group--publisher">
             <label>Publisher</label>
-            <input value="" required name="publisher" type="text" />
+            <input value="" name="publisher" type="text" required />
           </div>
           <div class="upload__input-group upload__input-group--time">
             <label>Total time</label>
-            <input value="" required name="cookingTime" type="number" min="0" />
+            <input value="" name="totalTime" type="number" min="0" required />
           </div>
           <div class="upload__input-group upload__input-group--url">
             <label>Site Url</label>
-            <input value="" required name="sourceUrl" type="text" />
+            <input value="" name="sourceUrl" type="text" required />
           </div>
           <div class="upload__input-group upload__input-group--image-url">
             <label>Image Url</label>
@@ -236,7 +245,7 @@
           </div>
         </div>
         <div class="upload__ingredients">
-          <h3 class="upload__heading">Ingredients</h3>
+          <h3 class="upload__heading">Ingredients Data</h3>
           <div class="upload__ingredients-column upload__ingredients-column--1">
             <label>Ingredient 1</label>
             <input
@@ -250,17 +259,15 @@
             <div class="select">
               <select name="ingredient-1-unit" required>
                 <option value="unit" selected>unit</option>
-                <option value="tsp">tsp</option>
-                <option value="tbsp">tbsp</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
                 <option value="cup">c</option>
-                <option value="pt">pt</option>
-                <option value="qt">qt</option>
-                <option value="gal">gal</option>
-                <option value="oz">oz</option>
-                <option value="lb">lb</option>
-                <option value="fl oz">fl oz</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
                 <option value="ml">ml</option>
-                <option value="L">L</option>
+                <option value="l">l</option>
                 <option value="g">g</option>
                 <option value="kg">kg</option>
               </select>
@@ -282,13 +289,23 @@
               min="0"
               required
             />
+            <div class="select">
+              <select name="ingredient-2-unit" required>
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-2-unit"
-              placeholder="Unit"
-              required
-            /><input
               value=""
               type="text"
               name="ingredient-2-description"
@@ -305,13 +322,23 @@
               min="0"
               required
             />
+            <div class="select">
+              <select name="ingredient-3-unit" required>
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-3-unit"
-              placeholder="Unit"
-              required
-            /><input
               value=""
               type="text"
               name="ingredient-3-description"
@@ -328,13 +355,23 @@
               min="0"
               required
             />
+            <div class="select">
+              <select name="ingredient-4-unit" required>
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-4-unit"
-              placeholder="Unit"
-              required
-            /><input
               value=""
               type="text"
               name="ingredient-4-description"
@@ -351,12 +388,23 @@
               placeholder="Quantity"
               min="0"
             />
+            <div class="select">
+              <select name="ingredient-5-unit">
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-5-unit"
-              placeholder="Unit"
-            /><input
               value=""
               type="text"
               name="ingredient-5-description"
@@ -371,12 +419,23 @@
               placeholder="Quantity"
               min="0"
             />
+            <div class="select">
+              <select name="ingredient-6-unit">
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-6-unit"
-              placeholder="Unit"
-            /><input
               value=""
               type="text"
               name="ingredient-6-description"
@@ -391,12 +450,23 @@
               placeholder="Quantity"
               min="0"
             />
+            <div class="select">
+              <select name="ingredient-7-unit">
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-7-unit"
-              placeholder="Unit"
-            /><input
               value=""
               type="text"
               name="ingredient-7-description"
@@ -411,12 +481,23 @@
               placeholder="Quantity"
               min="0"
             />
+            <div class="select">
+              <select name="ingredient-8-unit">
+                <option value="unit" selected>unit</option>
+                <option value="teaspoon">tsp</option>
+                <option value="tablespoon">tbsp</option>
+                <option value="cup">c</option>
+                <option value="pint">pt</option>
+                <option value="quart">qt</option>
+                <option value="ounce">oz</option>
+                <option value="pound">lb</option>
+                <option value="ml">ml</option>
+                <option value="l">l</option>
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
             <input
-              value=""
-              type="text"
-              name="ingredient-8-unit"
-              placeholder="Unit"
-            /><input
               value=""
               type="text"
               name="ingredient-8-description"

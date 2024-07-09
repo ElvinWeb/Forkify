@@ -83,7 +83,7 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderError(err);
     console.log(err);
   }
-  
+
   setTimeout(function () {
     addRecipeView.toggleWindow();
     location.reload();
@@ -91,16 +91,13 @@ const controlAddRecipe = async function (newRecipe) {
 };
 
 const controlIntroAnimation = function () {
-  const intro = document.querySelector(".intro");
-  const container = document.querySelector(".container");
   document.body.style.overflow = "hidden";
-
+  
   introView.render(model.state.recipe);
 
   setTimeout(() => {
-    intro.classList.add("close");
+    introView.addIntroAnimation();
     document.body.style.overflow = "initial";
-    container.classList.add("container-intro");
   }, FADE_ANIMATION_SEC);
 };
 
