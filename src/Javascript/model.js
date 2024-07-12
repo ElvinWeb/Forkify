@@ -1,9 +1,6 @@
 import {
-  API_URL,
   RES_PER_PAGE,
-  API_KEY,
   API_URLS,
-  BASE_API_URL,
   SPOONACULAR_API_KEY,
   SPOONACULAR_API_URL,
   SERVINGS_TO_UPLOAD,
@@ -52,31 +49,33 @@ const loadRecipe = async function (id) {
       state.recipe.bookmarked = false;
     }
 
-    // const ingredientList = state.recipe.ingredients
-    //   .map(
-    //     (ing) => `${ing.quantity ?? ""} ${ing.unit ?? ""} ${ing.description}`
-    //   )
-    //   .join("\n");
+    const ingredientList = state.recipe.ingredients
+      .map(
+        (ing) => `${ing.quantity ?? ""} ${ing.unit ?? ""} ${ing.description}`
+      )
+      .join("\n");
 
-    // const ingredientsData = await AJAX(
-    //   `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
-    //   {
-    //     ingredientList: ingredientList,
-    //     servings: state.recipe.servings,
-    //     includeNutrition: true,
-    //   },
-    //   "application/x-www-form-urlencoded"
-    // );
+    const ingredientsData = await AJAX(
+      `${SPOONACULAR_API_URL}?apiKey=${SPOONACULAR_API_KEY}`,
+      {
+        ingredientList: ingredientList,
+        servings: state.recipe.servings,
+        includeNutrition: true,
+      },
+      "application/x-www-form-urlencoded"
+    );
 
-    // const calories = getTotalNutrientAmount(ingredientsData, "calories");
-    // const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
-    // const proteins = getTotalNutrientAmount(ingredientsData, "protein");
-    // const fats = getTotalNutrientAmount(ingredientsData, "fat");
+    const calories = getTotalNutrientAmount(ingredientsData, "calories");
+    const carbs = getTotalNutrientAmount(ingredientsData, "carbohydrates");
+    const proteins = getTotalNutrientAmount(ingredientsData, "protein");
+    const fats = getTotalNutrientAmount(ingredientsData, "fat");
 
-    // state.recipe.calories = Math.floor(calories / state.recipe.servings);
-    // state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
-    // state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
-    // state.recipe.fats = Math.floor(fats / state.recipe.servings);
+    state.recipe.calories = Math.floor(calories / state.recipe.servings);
+    state.recipe.carbs = Math.floor(carbs / state.recipe.servings);
+    state.recipe.proteins = Math.floor(proteins / state.recipe.servings);
+    state.recipe.fats = Math.floor(fats / state.recipe.servings);
+
+
   } catch (err) {
     throw err;
   }

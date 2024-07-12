@@ -5,6 +5,7 @@
     color: #fff;
     cursor: pointer;
     @include flex(null, center, null);
+    gap: 8px;
     transition: all 0.2s;
 
     &:hover {
@@ -13,14 +14,6 @@
 
     &:focus {
         outline: none;
-    }
-
-    &>*:first-child {
-        margin-right: 1rem;
-
-        @media screen and (max-width: $bp-small) {
-            margin-right: 0;
-        }
     }
 }
 

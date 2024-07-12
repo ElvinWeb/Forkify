@@ -1,139 +1,38 @@
-// .add-recipe-window {
-//   @include position(fixed, 50%, null, null, 50%);
-//   transform: translate(-50%, -50%);
-//   width: 100rem;
-//   background-color: white;
-//   border-radius: 9px;
-//   padding: 5rem 6rem;
-//   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
-//   z-index: 1000;
-//   transition: all 0.5s;
-
-//   @media screen and (max-width: $bp-medium) {
-//     width: 90%;
-//   }
-
-//   @media screen and (max-width: $bp-small) {
-//     width: 85%;
-//     position: absolute;
-//     top: 10%;
-//     transform: translateX(-50%);
-//   }
-
-//   .btn--close-modal {
-//     font-family: inherit;
-//     color: inherit;
-//     @include position(absolute, 0.5rem, 1.6rem, null, null);
-//     font-size: 3.5rem;
-//     cursor: pointer;
-//     border: none;
-//     background: none;
-//   }
-
-//   .upload {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     gap: 4rem 6rem;
-
-//     @media screen and (max-width: $bp-small) {
-//       grid-template-columns: 1fr;
-//       gap: 1rem;
-//     }
-
-
-//     &__column {
-//       display: grid;
-//       grid-template-columns: 1fr 2.8fr;
-//       align-items: center;
-//       gap: 1.5rem;
-
-//       @media screen and (max-width: $bp-small) {
-//         grid-template-columns: 1fr;
-//         gap: 1rem;
-//       }
-
-//       label {
-//         font-size: 1.5rem;
-//         font-weight: 600;
-//         color: inherit;
-//       }
-
-//       input {
-//         font-size: 1.5rem;
-//         padding: 0.8rem 1rem;
-//         border: 1px solid #ddd;
-//         border-radius: 0.5rem;
-//         transition: all 0.2s;
-
-//         &::placeholder {
-//           color: $color-grey-light-3;
-//         }
-
-//         &:focus {
-//           outline: none;
-//           border: 1px solid $color-primary;
-//           background-color: $color-grey-light-1;
-//         }
-//       }
-
-//       button {
-//         grid-column: 1 / span 2;
-//         justify-self: center;
-//         margin-top: 1rem;
-//       }
-//     }
-
-//     &__heading {
-//       font-size: 2.25rem;
-//       font-weight: 700;
-//       text-transform: uppercase;
-//       margin-bottom: 1rem;
-//       grid-column: 1/-1;
-//     }
-
-//     &__btn {
-//       grid-column: 1 / -1;
-//       justify-self: center;
-//     }
-//   }
-// }
-
-
 .add-recipe-window {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  @include position(fixed, 50%, null, null, 50%);
   transform: translate(-50%, -50%);
-  width: 100rem;
+  width: 115rem;
   background-color: $color-grey-light-2;
-  border-radius: 9px;
+  border-radius: 10px;
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
   transition: all 0.5s;
-  z-index: 3500;
+  z-index: 350;
 
   @media only screen and (max-width: $bp-large) {
     transform: translate(-50%, -50%) scale(0.9);
+    width: 105rem;
   }
 
   @media only screen and (max-width: $bp-medium) {
-    width: 60rem;
+    width: 95rem;
   }
 
   @media only screen and (max-width: $bp-small) {
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 50rem;
+    width: 65rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 49rem;
+    padding: 5rem;
   }
 
   .btn--close-modal {
     font-family: inherit;
     color: inherit;
-    position: absolute;
-    top: 0.5rem;
-    right: 1.6rem;
+    @include position(absolute, 0.5rem, 1.6rem, null, null);
     font-size: 3.5rem;
     cursor: pointer;
-    border: none;
     background: none;
   }
 
@@ -154,12 +53,23 @@
     }
 
     &__input-group {
+      display: flex;
+      align-items: center;
+
       label {
         font-size: 1.5rem;
         font-weight: 600;
         color: inherit;
         float: left;
         width: 20%;
+
+        @media screen and (max-width: $bp-medium) {
+          width: 15%;
+        }
+
+        @media screen and (max-width: $bp-small) {
+          width: 20%;
+        }
       }
 
       input {
@@ -187,18 +97,18 @@
       &--publisher,
       &--time {
         label {
-          float: left;
-          width: 43%;
+          width: 63%;
 
           @media only screen and (max-width: $bp-medium) {
+            width: 15%;
+          }
+
+          @media only screen and (max-width: $bp-small) {
             width: 20%;
           }
         }
 
         input {
-          float: right;
-          width: 57%;
-
           @media only screen and (max-width: $bp-medium) {
             width: 80%;
           }
@@ -215,6 +125,10 @@
       grid-template-columns: 2fr 1fr 1fr;
       gap: 1rem 3rem;
 
+      @media only screen and (max-width: $bp-large) {
+        gap: 1rem 2rem;
+      }
+
       @media only screen and (max-width: $bp-medium) {
         display: flex;
         flex-direction: column;
@@ -223,8 +137,16 @@
 
     &__ingredients-column {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 0.8fr 1fr 1fr 1fr;
       gap: 1rem 1rem;
+
+      @media screen and (max-width: $bp-medium) {
+        grid-template-columns: 0.5fr 1fr 1fr 1fr;
+      }
+
+      @media screen and (max-width: $bp-small) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
 
       &--1 {
         grid-column: 1 / span 1;
@@ -243,7 +165,7 @@
 
       input {
         font-size: 1.4rem;
-        max-width: 10rem;
+        max-width: 12rem;
         padding: 0.8rem 1rem;
         border: 1px solid #ddd;
         border-radius: 0.5rem;
@@ -259,6 +181,18 @@
           outline: none;
           border: 1px solid $color-primary;
           background-color: $color-grey-light-1;
+        }
+
+        @media screen and (max-width: $bp-medium) {
+          max-width: 100%;
+        }
+
+        @media screen and (max-width: $bp-small) {
+          max-width: 15rem;
+        }
+
+        @media screen and (max-width: $bp-smallest) {
+          max-width: 9rem;
         }
       }
     }

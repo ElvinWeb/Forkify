@@ -12,10 +12,6 @@
       display: none;
     }
 
-    @media screen and (max-width: $bp-smallest) {
-      padding-right: 1rem;
-    }
-
     &--mobile {
       display: none;
 
@@ -25,9 +21,14 @@
     }
   }
 
-  @media screen and (max-width: $bp-smallest) {
-    padding: 20px;
+  @media screen and (max-width: $bp-medium) {
+    padding: 0px 20px;
   }
+
+  @media screen and (max-width: $bp-smallest) {
+    padding: 20px 15px;
+  }
+
 
   .search {
     background-color: #fff;
@@ -35,6 +36,10 @@
     @include flex(null, center, null);
     padding-left: 3rem;
     transition: all 0.3s;
+    margin: 0px 10px;
+
+    @media screen and (max-width: $bp-small) {
+    }
 
     &:focus-within {
       transform: translateY(-2px);
@@ -79,7 +84,11 @@
       font-family: inherit;
 
       @media screen and (max-width: $bp-small) {
-        span {
+        padding: 1.5rem 2.5rem;
+      }
+
+      span {
+        @media screen and (max-width: $bp-small) {
           display: none;
         }
       }
@@ -149,6 +158,5 @@
         background-color: $color-grey-light-2;
       }
     }
-
   }
 }

@@ -8,13 +8,13 @@
     select {
         appearance: none;
         box-shadow: none;
-        outline: none;
         background-image: none;
         flex: 1;
         padding: 0 1rem;
         color: $color-grey-dark-1;
         background-color: $color-grey-light-1;
         cursor: pointer;
+        font-family: inherit;
 
         &::-ms-expand {
             display: none;
