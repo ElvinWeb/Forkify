@@ -2,18 +2,29 @@ import View from "./view.js";
 import intro_logo from "../../img/logo.png";
 
 class IntroView extends View {
-  _parentElement = document.querySelector(".intro");
-  _container = document.querySelector(".container");
+  // Cache DOM elements in constructor for better performance
+  constructor() {
+    super();
+    this._parentElement = document.querySelector(".intro");
+    this._container = document.querySelector(".container"); 
+  }
 
   _generateMarkup() {
-    return `<img src=${intro_logo} class="fade-in intro__logo" alt="intro-logo"/>`;
+    // Use template literal with proper quotes for attributes
+    return `<img src="${intro_logo}" class="fade-in intro__logo" alt="intro-logo">`;
   }
+
   addIntroAnimation() {
-    this._parentElement.classList.add("close");
-    this._container.classList.add("container-intro");
+    // Add both classes in one reflow for better performance
+    requestAnimationFrame(() => {
+      this._parentElement.classList.add("close");
+      this._container.classList.add("container-intro");
+    });
   }
+
   addHandlerIntro(handler) {
-    window.addEventListener("DOMContentLoaded", handler);
+    // Use once:true option to auto-cleanup event listener
+    window.addEventListener("DOMContentLoaded", handler, { once: true });
   }
 }
 

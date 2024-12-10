@@ -10,27 +10,26 @@ class AddRecipeView extends View {
 
   constructor() {
     super();
-    this._addHandlerShowWindow();
-    this._addHandlerHideWindow();
+    this._initializeEventListeners();
   }
 
-  _addHandlerShowWindow() {
-    this._btnOpen.addEventListener("click", this.toggleWindow.bind(this));
+  _initializeEventListeners() {
+    // Use arrow functions to preserve 'this' context without bind
+    this._btnOpen.addEventListener("click", () => this.toggleWindow());
+    this._btnClose.addEventListener("click", () => this.toggleWindow());
+    this._overlay.addEventListener("click", () => this.toggleWindow());
   }
-  _addHandlerHideWindow() {
-    this._btnClose.addEventListener("click", this.toggleWindow.bind(this));
-    this._overlay.addEventListener("click", this.toggleWindow.bind(this));
-  }
+
   toggleWindow() {
-    this._overlay.classList.toggle("hidden");
-    this._window.classList.toggle("hidden");
+    // Toggle both elements with single operation
+    [this._overlay, this._window].forEach(el => el.classList.toggle("hidden"));
   }
+
   addHandlerUpload(handler) {
-    this._parentElement.addEventListener("submit", function (e) {
+    this._parentElement.addEventListener("submit", function(e) {
       e.preventDefault();
-      const dataArr = [...new FormData(this)];
-      const data = Object.fromEntries(dataArr);
-      console.log(data);
+      // Convert form data to object more directly
+      const data = Object.fromEntries(new FormData(this));
       handler(data);
     });
   }

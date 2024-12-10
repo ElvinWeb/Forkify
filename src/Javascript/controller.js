@@ -21,13 +21,18 @@ const controlRecipes = async function () {
     if (!hashId) return;
 
     recipeView.renderSpinner();
-    resultsView.update(model.getSearchResultsPage());
-    bookmarksView.update(model.state.bookmarks);
-    await model.loadRecipe(hashId);
+    
+    // Batch updates together
+    await Promise.all([
+      model.loadRecipe(hashId),
+      resultsView.update(model.getSearchResultsPage()),
+      bookmarksView.update(model.state.bookmarks)
+    ]);
+
     recipeView.render(model.state.recipe);
   } catch (err) {
+    console.error('Error loading recipe:', err);
     recipeView.renderError();
-    console.log(err);
   }
 };
 
@@ -35,24 +40,30 @@ const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
     const query = searchView.getQuery();
-    const patternMatch = FORBIDDEN_PATTERN.test(query);
-    if (patternMatch) {
-      resultsView.renderError("You searched query is not allowed!");
-      return;
+    
+    if (FORBIDDEN_PATTERN.test(query)) {
+      return resultsView.renderError("Your search query is not allowed!");
     }
 
     await model.loadSearchResults(query);
-    resultsView.render(model.getSearchResultsPage());
-    paginationView.render(model.state.search);
+    
+    // Batch render updates
+    Promise.all([
+      resultsView.render(model.getSearchResultsPage()),
+      paginationView.render(model.state.search)
+    ]);
   } catch (err) {
+    console.error('Error searching recipes:', err);
     recipeView.renderError();
-    console.log(err);
   }
 };
 
 const controlPagination = function (goToPage) {
-  resultsView.render(model.getSearchResultsPage(goToPage));
-  paginationView.render(model.state.search);
+  // Batch render updates
+  Promise.all([
+    resultsView.render(model.getSearchResultsPage(goToPage)),
+    paginationView.render(model.state.search)
+  ]);
 };
 
 const controlServings = function (newServings) {
@@ -61,10 +72,18 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
-  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-  else model.deleteBookmark(model.state.recipe.id);
-  recipeView.update(model.state.recipe);
-  bookmarksView.render(model.state.bookmarks);
+  const { recipe } = model.state;
+  if (!recipe.bookmarked) {
+    model.addBookmark(recipe);
+  } else {
+    model.deleteBookmark(recipe.id);
+  }
+  
+  // Batch render updates
+  Promise.all([
+    recipeView.update(recipe),
+    bookmarksView.render(model.state.bookmarks)
+  ]);
 };
 
 const controlBookmarks = function () {
@@ -75,41 +94,57 @@ const controlAddRecipe = async function (newRecipe) {
   try {
     addRecipeView.renderSpinner();
     await model.uploadRecipe(newRecipe);
-    recipeView.render(model.state.recipe);
-    addRecipeView.renderMessage();
-    bookmarksView.render(model.state.bookmarks);
-    window.history.pushState(null, "", `#${model.state.recipe.id}`);
-  } catch (err) {
-    addRecipeView.renderError(err);
-    console.log(err);
-  }
+    
+    // Batch render updates
+    await Promise.all([
+      recipeView.render(model.state.recipe),
+      bookmarksView.render(model.state.bookmarks)
+    ]);
 
-  setTimeout(function () {
-    addRecipeView.toggleWindow();
-    location.reload();
-  }, MODAL_CLOSE_SEC);
+    addRecipeView.renderMessage();
+    window.history.pushState(null, "", `#${model.state.recipe.id}`);
+
+    // Use requestAnimationFrame for smoother UI updates
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        addRecipeView.toggleWindow();
+        location.reload();
+      }, MODAL_CLOSE_SEC);
+    });
+  } catch (err) {
+    console.error('Error adding recipe:', err);
+    addRecipeView.renderError(err);
+  }
 };
 
 const controlIntroAnimation = function () {
   document.body.style.overflow = "hidden";
-  
   introView.render(model.state.recipe);
 
-  setTimeout(() => {
-    introView.addIntroAnimation();
-    document.body.style.overflow = "initial";
-  }, FADE_ANIMATION_SEC);
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      introView.addIntroAnimation();
+      document.body.style.overflow = "initial";
+    }, FADE_ANIMATION_SEC);
+  });
 };
 
 const init = function () {
-  bookmarksView.addHandlerRender(controlBookmarks);
-  recipeView.addHandlerHelper(controlRecipes);
-  recipeView.addHandlerUpdateServings(controlServings);
-  recipeView.addHandlerBookmark(controlAddBookmark);
-  searchView.addHandlerSearch(controlSearchResults);
-  paginationView.addHandlerClick(controlPagination);
-  addRecipeView.addHandlerUpload(controlAddRecipe);
-  introView.addHandlerIntro(controlIntroAnimation);
+  // Initialize all event handlers
+  const handlers = [
+    [bookmarksView, 'addHandlerRender', controlBookmarks],
+    [recipeView, 'addHandlerHelper', controlRecipes],
+    [recipeView, 'addHandlerUpdateServings', controlServings], 
+    [recipeView, 'addHandlerBookmark', controlAddBookmark],
+    [searchView, 'addHandlerSearch', controlSearchResults],
+    [paginationView, 'addHandlerClick', controlPagination],
+    [addRecipeView, 'addHandlerUpload', controlAddRecipe],
+    [introView, 'addHandlerIntro', controlIntroAnimation]
+  ];
+
+  handlers.forEach(([view, handler, controller]) => {
+    view[handler](controller);
+  });
 };
 
 init();

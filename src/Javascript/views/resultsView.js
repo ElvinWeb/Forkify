@@ -2,16 +2,31 @@ import View from "./view.js";
 import previewView from "./previewView.js";
 
 class ResultsView extends View {
-  _parentElement = document.querySelector(".search-results__list");
-  _countElement = document.querySelector(".count__number");
-  _minuteFilterBtn = document.querySelector(".sorting__button--min");
-  _errorMessage = "No recipes found for your query! Please try again";
-  _message = "";
+  // Cache DOM queries in constructor for better performance
+  constructor() {
+    super();
+    this._parentElement = document.querySelector(".search-results__list");
+    this._countElement = document.querySelector(".count__number"); 
+    this._minuteFilterBtn = document.querySelector(".sorting__button--min");
+  }
+
+  // Define static messages to avoid creating new strings
+  static ERROR_MESSAGE = "No recipes found for your query! Please try again";
+  static SUCCESS_MESSAGE = "";
+
+  get _errorMessage() {
+    return ResultsView.ERROR_MESSAGE;
+  }
+
+  get _message() {
+    return ResultsView.SUCCESS_MESSAGE;
+  }
 
   _generateMarkup() {
-    return this._data
-      .map((result) => previewView.render(result, false))
-      .join("");
+    // Use more efficient array method
+    return this._data.reduce((markup, result) => 
+      markup + previewView.render(result, false), 
+    "");
   }
 }
 

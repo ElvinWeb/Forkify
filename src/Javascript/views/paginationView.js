@@ -5,76 +5,44 @@ class PaginationView extends View {
   _parentElement = document.querySelector(".pagination");
 
   _generateMarkup() {
-    const currPage = this._data.page;
-    const numPages = Math.ceil(
-      this._data.results.length / this._data.resultsPerPage
-    );
+    const { page: currPage, results, resultsPerPage } = this._data;
+    const numPages = Math.ceil(results.length / resultsPerPage);
 
-    if (currPage === 1 && numPages > 1) {
-      return `
-      <button class="btn--inline pagination__btn--next" data-goto="${
-        currPage + 1
-      }">
-        <span>Page ${currPage + 1}</span>
-          <svg class="search__icon">
-            <use href="${icons}#icon-arrow-right"></use>
-          </svg>
-      </button>
+    // Return early if only 1 page
+    if (numPages <= 1) return "";
+
+    // Always show page label
+    const pageLabel = `
       <div class="pagination__label">
         <span class="pagination__label-text">Page ${currPage} out of ${numPages}</span>
-      </div>
-      `;
-    }
+      </div>`;
 
-    if (currPage === numPages && numPages > 1) {
-      return `
-      <button class="btn--inline pagination__btn--prev" data-goto="${
-        currPage - 1
-      }">
-          <svg class="search__icon">
-            <use href="${icons}#icon-arrow-left"></use>
-          </svg>
+    // Generate prev button markup if not on first page
+    const prevButton = currPage > 1 ? `
+      <button class="btn--inline pagination__btn--prev" data-goto="${currPage - 1}">
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-left"></use>
+        </svg>
         <span>Page ${currPage - 1}</span>
-      </button>
-      <div class="pagination__label">
-        <span class="pagination__label-text">Page ${currPage} out of ${numPages}</span>
-      </div>
-      `;
-    }
+      </button>` : '';
 
-    if (currPage < numPages) {
-      return `
-        <button class="btn--inline pagination__btn--prev" data-goto="${
-          currPage - 1
-        }">
-            <svg class="search__icon">
-              <use href="${icons}#icon-arrow-left"></use>
-            </svg>
-            <span>Page ${currPage - 1}</span>
-        </button>
-        <button class="btn--inline pagination__btn--next" data-goto="${
-          currPage + 1
-        }">
-            <span>Page ${currPage + 1}</span>
-            <svg class="search__icon">
-              <use href="${icons}#icon-arrow-right"></use>
-            </svg>
-        </button>
-        <div class="pagination__label">
-          <span class="pagination__label-text">Page ${currPage} out of ${numPages}</span>
-        </div>
-      `;
-    }
+    // Generate next button markup if not on last page  
+    const nextButton = currPage < numPages ? `
+      <button class="btn--inline pagination__btn--next" data-goto="${currPage + 1}">
+        <span>Page ${currPage + 1}</span>
+        <svg class="search__icon">
+          <use href="${icons}#icon-arrow-right"></use>
+        </svg>
+      </button>` : '';
 
-    return "";
+    return prevButton + nextButton + pageLabel;
   }
+
   addHandlerClick(handler) {
-    this._parentElement.addEventListener("click", function (e) {
+    this._parentElement.addEventListener("click", e => {
       const btn = e.target.closest(".btn--inline");
       if (!btn) return;
-
-      const goToPage = +btn.dataset.goto;
-      handler(goToPage);
+      handler(+btn.dataset.goto);
     });
   }
 }
